@@ -16,7 +16,7 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -33,8 +33,10 @@ namespace api.Controllers
             }
         }
 
+
         [HttpGet]
         [Route("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById([FromRoute] string id)
         {
             try
@@ -55,6 +57,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] UsuarioReqDTO request)
         {
             try
@@ -76,6 +79,7 @@ namespace api.Controllers
 
         [HttpPut]
         [Route("{id}")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UsuarioReqDTO request)
         {
             try
@@ -97,6 +101,7 @@ namespace api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete([FromRoute] string id)
         {
             try

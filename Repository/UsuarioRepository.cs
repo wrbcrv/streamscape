@@ -13,14 +13,12 @@ namespace api.Repository
         private readonly ApplicationDbContext _context;
         private readonly IHashService _hashService;
         private readonly UserManager<Usuario> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsuarioRepository(ApplicationDbContext context, IHashService hashService, UserManager<Usuario> userManager, RoleManager<IdentityRole> roleManager)
+        public UsuarioRepository(ApplicationDbContext context, IHashService hashService, UserManager<Usuario> userManager)
         {
             _context = context;
             _hashService = hashService;
             _userManager = userManager;
-            _roleManager = roleManager;
         }
 
         public async Task<List<Usuario>> GetAllAsync()

@@ -1,7 +1,9 @@
 using System.Security.Claims;
 using api.DTOs.Login;
 using api.Interfaces;
+using api.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -11,14 +13,17 @@ namespace api.Controllers
     {
         private readonly ITokenService _tokenService;
         private readonly IUsuarioRepository _usuarioRepository;
-        public LoginController(ITokenService tokenService, IUsuarioRepository usuarioRepository)
+        private readonly UserManager<Usuario> _userManager;
+
+        public LoginController(ITokenService tokenService, IUsuarioRepository usuarioRepository, UserManager<Usuario> userManager)
         {
             _tokenService = tokenService;
             _usuarioRepository = usuarioRepository;
+            _userManager = userManager;
         }
 
-        [AllowAnonymous]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginReqDTO request)
         {
             try
@@ -30,7 +35,9 @@ namespace api.Controllers
                     return Unauthorized(new { message = "Credenciais inválidas" });
                 }
 
-                var token = _tokenService.CreateToken(usuario);
+                var roles = await _userManager.GetRolesAsync(usuario);
+
+                var token = _tokenService.CreateToken(usuario, roles);
 
                 var options = new CookieOptions
                 {
