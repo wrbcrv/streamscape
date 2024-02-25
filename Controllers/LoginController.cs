@@ -48,12 +48,26 @@ namespace api.Controllers
 
                 Response.Cookies.Append("token", token, options);
 
-                return Ok(new { token });
+                return Ok(new { message = "Login bem-sucedido." });
             }
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
+        }
+
+        [HttpGet("token")]
+        [AllowAnonymous]
+        public IActionResult GetToken()
+        {
+            var token = Request.Cookies["token"];
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return NotFound(new { message = "Token não encontrado." });
+            }
+
+            return Ok(new { token });
         }
     }
 }

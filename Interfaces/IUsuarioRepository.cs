@@ -18,5 +18,7 @@ namespace api.Interfaces
         Task<Usuario?> FindByEmailAndSenhaAsync(string email, string senha);
 
         Task<Usuario?> FindByEmail(string email);
+
+        Task<Usuario?> FindByUsername(string username);
     }
 }

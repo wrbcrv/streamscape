@@ -115,5 +115,17 @@ namespace api.Repository
 
             return usuario;
         }
+
+        public async Task<Usuario?> FindByUsername(string username)
+        {
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.UserName == username);
+
+            if (usuario == null)
+            {
+                return null;
+            }
+
+            return usuario;
+        }
     }
 }

@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "pyaMSCEWRZ4nvKCja2XnniyJFEBxfxA7VVvbHvFd6MQ=",
+  "Hash": "Uwf1M6wl/5Zb18AxTCg0a6qmsLaxT2xEvKPPM8f6Cx0=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "api\\wwwroot",
+      "Source": "api",
+      "ContentRoot": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\wwwroot\\",
+      "BasePath": "_content/api",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

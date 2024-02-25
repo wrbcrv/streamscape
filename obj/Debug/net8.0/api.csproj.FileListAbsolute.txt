@@ -426,3 +426,4 @@ C:\Users\werbt\OneDrive\Documents\GitHub\streamscape\obj\Debug\net8.0\refint\api
 C:\Users\werbt\OneDrive\Documents\GitHub\streamscape\obj\Debug\net8.0\api.pdb
 C:\Users\werbt\OneDrive\Documents\GitHub\streamscape\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Users\werbt\OneDrive\Documents\GitHub\streamscape\obj\Debug\net8.0\ref\api.dll
+C:\Users\werbt\OneDrive\Documents\GitHub\streamscape\bin\Debug\net8.0\api.staticwebassets.runtime.json
