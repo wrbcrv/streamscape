@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\api.csproj": {}
+    "C:\\Users\\werbt\\OneDrive\\Documents\\streamscape\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\api.csproj": {
+    "C:\\Users\\werbt\\OneDrive\\Documents\\streamscape\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\api.csproj",
+        "projectUniqueName": "C:\\Users\\werbt\\OneDrive\\Documents\\streamscape\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\api.csproj",
+        "projectPath": "C:\\Users\\werbt\\OneDrive\\Documents\\streamscape\\api\\api.csproj",
         "packagesPath": "C:\\Users\\werbt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\obj\\",
+        "outputPath": "C:\\Users\\werbt\\OneDrive\\Documents\\streamscape\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\werbt\\AppData\\Roaming\\NuGet\\NuGet.Config",

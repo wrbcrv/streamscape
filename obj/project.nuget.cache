@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9VOtv5UWmyNbaT41UvULYn01rpjkwT6TFlOPDcIzGPW3SXndrZiPpe4CN/ROb/zKSKNvoTfRP2kyYt6C+zkU7Q==",
+  "dgSpecHash": "mqXBCQGqfWEZOy7McxUfUh9MvUdxA2Na3UMcvZN1RwBXiB9XPS3f4TS3yvJ1G1M3Wgc6eds37fgmjBQhZc+Xiw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\api.csproj",
+  "projectFilePath": "C:\\Users\\werbt\\OneDrive\\Documents\\streamscape\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\werbt\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\werbt\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

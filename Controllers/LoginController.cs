@@ -28,6 +28,16 @@ namespace api.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState
+                        .Where(x => x.Value.Errors.Any())
+                        .SelectMany(x => x.Value.Errors.Select(e => new { Field = x.Key, Message = e.ErrorMessage }))
+                        .ToList();
+
+                    return BadRequest(new { errors });
+                }
+
                 var usuario = await _usuarioRepository.FindByEmailAndSenhaAsync(request.Email, request.Senha);
 
                 if (usuario == null)
