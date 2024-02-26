@@ -1,21 +1,35 @@
-<form (submit)="login()">
-  <div>
-    <label for="email">Email:</label>
-    <input 
-      type="email" 
-      id="email" 
-      name="email" 
-      [(ngModel)]="request.email"
-    />
-  </div>
-  <div>
-    <label for="senha">Senha:</label>
-    <input 
-      type="password" 
-      id="senha" 
-      name="senha" 
-      [(ngModel)]="request.senha"
-    />
-  </div>
-  <button type="submit">Entrar</button>
-</form>
+<div class="container">
+  <form class="login-form" (submit)="login()">
+    <span class="login-heading"></span>
+    <div class="form-group">
+      <input 
+        class="form-control" 
+        placeholder="Endereço de e-mail"
+        type="email" 
+        id="email" 
+        name="email" 
+        [(ngModel)]="request.email"
+      />
+      </div>
+    <div class="error-message" *ngIf="errors['Email']">
+      <span class="material-symbols-outlined error">error</span>
+      {{ errors['Email'] }}
+    </div>
+    <div class="form-group">
+      <input 
+        class="form-control" 
+        placeholder="Senha"
+        type="password" 
+        id="senha" 
+        name="senha" 
+        [(ngModel)]="request.senha"
+      />
+    </div>
+    <div class="error-message" *ngIf="errors['Senha']">
+      <span class="material-symbols-outlined error">error</span>
+      {{ errors['Senha'] }}
+    </div>
+    <button class="btn btn-primary" type="submit">Entrar</button>
+    <span class="paragraph-component">Não tem uma conta? Cadastre-se</span>
+  </form>
+</div>
