@@ -1,1 +1,8 @@
-<p>header works!</p>
+<header class="header">
+  <div class="logo">Streamscape</div>
+  <div *ngIf="!usuario" class="enter-btn" routerLink="/login">Entrar</div>
+  <div *ngIf="usuario" class="user-info">
+    <div>{{ usuario.nome }}</div>
+    <div class="profile-picture"></div>
+  </div>
+</header>
