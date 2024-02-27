@@ -36,6 +36,29 @@ button {
     border-radius: 50px;
 }
 
+.border-right {
+    padding-right: 0;
+    border-radius: 50px 0 0 50px;
+}
+
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding-right: 20px;
+    border-radius: 0 50px 50px 0;
+    height: 48.40px;
+    cursor: pointer;
+    user-select: none;
+}
+
 .error-message {
     display: flex;
     align-items: center;

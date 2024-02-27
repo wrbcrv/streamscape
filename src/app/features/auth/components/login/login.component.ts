@@ -20,6 +20,8 @@ export class LoginComponent {
 
   errors: { [key: string]: string } = {};
 
+  showPassword: boolean = false;
+
   constructor(
     private authService: AuthService,
     private errorHandlerSevice: ErrorHandlerService,
@@ -33,5 +35,9 @@ export class LoginComponent {
         this.errors = this.errorHandlerSevice.handleErrors(error);
       });
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 }

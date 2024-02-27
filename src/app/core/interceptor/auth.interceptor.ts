@@ -7,10 +7,16 @@ import { map, switchMap } from "rxjs/operators";
 export class AuthInterceptor implements HttpInterceptor {
   private apiUrl: string = 'http://localhost:8080/api/login';
 
+  private allowedUrls: string[] = [
+    this.apiUrl,
+    `${this.apiUrl}/token`,
+    'http://localhost:8080/api/usuarios'
+  ];
+
   constructor(private http: HttpClient) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url === this.apiUrl || req.url === `${this.apiUrl}/token` || req.url === 'http://localhost:8080/api/usuarios')
+    if (this.isAllowedUrl(req.url))
       return next.handle(req);
 
     return this.getToken().pipe(
@@ -34,5 +40,9 @@ export class AuthInterceptor implements HttpInterceptor {
     }).pipe(
       map(response => response.token)
     );
+  }
+
+  private isAllowedUrl(url: string): boolean {
+    return this.allowedUrls.some(allowedUrl => url === allowedUrl);
   }
 }

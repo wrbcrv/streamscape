@@ -15,6 +15,10 @@ export class ErrorHandlerService {
         errors[err.field] = err.message;
       });
     }
+
+    if (error && error.error) {
+      
+    }
     
     return errors;
   }
