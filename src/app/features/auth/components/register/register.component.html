@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="message-container">
+    <div class="message message-header">Criar conta</div>
+    <div class="message">Preencha o formulário abaixo para criar sua nova conta.</div>
+  </div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input 
+        class="form-control"
+        type="text" 
+        placeholder="Nome"
+        name="nome"
+        [(ngModel)]="request.nome"
+      />
+    </div>
+    <div class="form-group">
+      <input 
+        class="form-control"
+        type="text" 
+        placeholder="Sobrenome"
+        name="sobrenome"
+        [(ngModel)]="request.sobrenome"
+      />
+    </div>
+    <div class="form-group">
+      <input 
+        class="form-control"
+        type="text" 
+        placeholder="Nome de usuário"
+        name="username"
+        [(ngModel)]="request.username"
+      />
+    </div>
+    <div class="form-group">
+      <input 
+        class="form-control"
+        type="email" 
+        placeholder="Email"
+        name="email"
+        [(ngModel)]="request.email"
+      />
+    </div>
+    <div class="form-group">
+      <input 
+        class="form-control"
+        type="password" 
+        placeholder="Senha"
+        name="senha"
+        [(ngModel)]="request.senha"
+      />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn">Criar conta</button>
+    </div>
+  </form>
+</div>

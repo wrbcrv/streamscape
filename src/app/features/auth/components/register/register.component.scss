@@ -1,0 +1,63 @@
+input,
+button {
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    appearance: none;
+    border: none;
+    outline: none;
+}
+
+.container {
+    font-family: 'Inter', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.message-container {
+    margin-bottom: 60px;
+}
+
+.message-header {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.message {
+    color: #fff;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-control {
+    max-width: 512px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.form-control::placeholder {
+    font-weight: 500;
+}
+
+.btn {
+    background-color: #fff;
+    color: #000;
+    font-weight: 500;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 50px;
+    width: 512px;
+    cursor: pointer;
+}

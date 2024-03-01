@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ErrorHandlerService } from '../../../../core/services/error-handler.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -18,7 +18,9 @@ export class LoginComponent {
     senha: ''
   };
 
-  errors: { [key: string]: string } = {};
+  errors: { [key: string]: string } | any = {};
+
+  error: string = '';
 
   showPassword: boolean = false;
 

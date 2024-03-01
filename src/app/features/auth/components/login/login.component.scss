@@ -14,6 +14,21 @@ button {
     transform: translate(-50%, -50%);
 }
 
+.message-container {
+    margin-bottom: 60px;
+}
+
+.message-header {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.message {
+    color: #fff;
+    text-align: center;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -94,4 +109,9 @@ button {
     font-size: 14px;
     color: #fff;
     align-self: center;
+}
+
+.underline:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

@@ -7,19 +7,19 @@ export class ErrorHandlerService {
 
   constructor() { }
 
-  handleErrors(error: any): { [key: string]: string } {
-    const errors: { [key: string]: string } = {};
-
+  handleErrors(error: any): { [key: string]: string } | any {
     if (error && error.error && error.error.errors) {
+      const errors: { [key: string]: string } = {};
+      
       error.error.errors.forEach((err: any) => {
         errors[err.field] = err.message;
       });
-    }
-
-    if (error && error.error) {
       
+      return errors;
+    } else if (error && error.error) {
+      return error.error;
+    } else {
+      return '';
     }
-    
-    return errors;
   }
 }
