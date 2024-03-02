@@ -3,6 +3,7 @@ import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../../core/services/usuario.service';
 import { Usuario } from '../../../core/models/usuario.model';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../features/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +14,12 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   usuario: Usuario | null = null;
+  menuOpen: boolean = false;
 
-  constructor(private usuarioService: UsuarioService, private router: Router) {
+  constructor(
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && event.url === '/') {
         this.getLoggedInUsuario();
@@ -34,5 +39,17 @@ export class HeaderComponent implements OnInit {
     }, (error) => {
 
     })
+  }
+
+  logout(): void {
+    this.authService.logout().subscribe((response) => {
+      this.router.navigateByUrl('/login');
+    }, (error) => {
+
+    })
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
   }
 }

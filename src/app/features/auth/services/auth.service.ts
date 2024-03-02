@@ -23,6 +23,12 @@ export class AuthService {
     });
   }
 
+  logout(): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login/logout`, {}, {
+      withCredentials: true
+    });
+  }
+
   register(usuario: Usuario): Observable<Usuario> {
     const request = {
       nome: usuario.nome,

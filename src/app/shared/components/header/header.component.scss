@@ -13,7 +13,7 @@
     color: #fff;
 }
 
-.enter-btn {
+.login-button {
     background-color: #fff;
     color: #000;
     font-weight: 500;
@@ -22,21 +22,126 @@
     cursor: pointer;
 }
 
-.enter-btn:hover {
+.login-button:hover {
     background-color: #e6e6e6;
 }
 
-.user-info {
+.user-section {
     display: flex;
     align-items: center;
     gap: 10px;
     color: #fff;
     cursor: pointer;
+    user-select: none;
 }
 
-.profile-picture {
-    background-color: #fff;
+.user-avatar,
+.menu-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+    color: #fff;
+    font-weight: 600;
+    line-height: 0;
+}
+
+.user-avatar {
     border-radius: 50px;
-    width:  34.40px;
+    width: 34.40px;
     height: 34.40px;
+}
+
+.user-info .menu ul,
+.user-info .menu ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #000;
+}
+
+.user-info {
+    position: absolute;
+    top: 66px;
+    right: 40px;
+    width: fit-content;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.user-profile {
+    background-color: #0d0d0d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    min-width: 230px;
+}
+
+.user-credentials {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.email {
+    margin-bottom: 5px;
+}
+
+.username {
+    color: #8c8c8c;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+    border-radius: 50px;
+}
+
+.fullname {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.menu {
+    padding: 10px;
+}
+
+.menu > ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu > ul > li {
+    display: block;
+    text-decoration: none;
+}
+
+.menu > ul > li > .menu-button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu > ul > li > .menu-button:hover {
+    color: #8c8c8c;
+}
+
+.logout {
+    color: #EF233C;
+}
+
+.logout:hover {
+    color: #AB0D1F !important;
 }
