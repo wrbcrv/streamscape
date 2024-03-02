@@ -19,9 +19,9 @@ export class RegisterComponent {
     username: '',
     email: '',
     senha: ''
-  }
+  };
 
-  errors: { [key: string]: string } = {};
+  errors: any = {};
 
   constructor(
     private authService: AuthService,
@@ -33,12 +33,10 @@ export class RegisterComponent {
       this.authService.login(this.request.email, this.request.senha).subscribe((response) => {
         this.router.navigateByUrl('/')
       }, (error) => {
-        console.log(error);
-      })
 
-      console.log(response);
+      })
     }, (error) => {
-      console.log(error);
+      this.errors = this.errorHandlerService.handleErrors(error.error);
     })
   }
 }

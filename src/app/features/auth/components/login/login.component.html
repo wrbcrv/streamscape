@@ -1,4 +1,3 @@
-<div *ngIf="error">{{ error }}</div>
 <div class="container">
   <div class="message-container">
     <div class="message message-header">Entrar</div>
@@ -16,9 +15,9 @@
         [(ngModel)]="request.email"
       />
       </div>
-    <div class="error-message" *ngIf="errors['Email']">
+    <div class="error-message" *ngIf="errors.Email">
       <span class="material-symbols-outlined error">error</span>
-      {{ errors['Email'] || errors }}
+      {{ errors.Email }}
     </div>
     <div class="form-group">
       <div class="form-group flex-container">
@@ -35,9 +34,9 @@
         </span>
       </div>
     </div>
-    <div class="error-message" *ngIf="errors['Senha']">
+    <div class="error-message" *ngIf="errors.Senha">
       <span class="material-symbols-outlined error">error</span>
-      {{ errors['Senha'] }}
+      {{ errors.Senha }}
     </div>
     <button class="btn btn-primary" type="submit">Entrar</button>
     <span class="paragraph-component">

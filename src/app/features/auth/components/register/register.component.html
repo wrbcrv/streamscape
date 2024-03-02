@@ -14,6 +14,10 @@
         [(ngModel)]="request.nome"
       />
     </div>
+    <div *ngIf="errors.Nome" class="error-message">
+      <span class="material-symbols-outlined error">error</span>
+      {{ errors.Nome }}
+    </div>
     <div class="form-group">
       <input 
         class="form-control"
@@ -22,6 +26,10 @@
         name="sobrenome"
         [(ngModel)]="request.sobrenome"
       />
+    </div>
+    <div *ngIf="errors.Sobrenome" class="error-message">
+      <span class="material-symbols-outlined error">error</span>
+      {{ errors.Sobrenome }}
     </div>
     <div class="form-group">
       <input 
@@ -32,6 +40,10 @@
         [(ngModel)]="request.username"
       />
     </div>
+    <div *ngIf="errors.Username" class="error-message">
+      <span class="material-symbols-outlined error">error</span>
+      {{ errors.Username }}
+    </div>
     <div class="form-group">
       <input 
         class="form-control"
@@ -41,6 +53,10 @@
         [(ngModel)]="request.email"
       />
     </div>
+    <div *ngIf="errors.Email" class="error-message">
+      <span class="material-symbols-outlined error">error</span>
+      {{ errors.Email }}
+    </div>
     <div class="form-group">
       <input 
         class="form-control"
@@ -49,6 +65,10 @@
         name="senha"
         [(ngModel)]="request.senha"
       />
+    </div>
+    <div *ngIf="errors.Senha" class="error-message">
+      <span class="material-symbols-outlined error">error</span>
+      {{ errors.Senha }}
     </div>
     <div class="form-group">
       <button type="submit" class="btn">Criar conta</button>

@@ -52,6 +52,19 @@ form {
     border-radius: 50px;
 }
 
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #EF233C;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.error {
+    font-size: 14px;
+}
+
 .form-control::placeholder {
     font-weight: 500;
 }

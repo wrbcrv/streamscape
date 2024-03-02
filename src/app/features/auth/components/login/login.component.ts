@@ -18,9 +18,7 @@ export class LoginComponent {
     senha: ''
   };
 
-  errors: { [key: string]: string } | any = {};
-
-  error: string = '';
+  errors: any = {};
 
   showPassword: boolean = false;
 
@@ -42,4 +40,4 @@ export class LoginComponent {
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
-}
+} 
