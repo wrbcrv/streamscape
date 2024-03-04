@@ -1,12 +1,12 @@
 <header class="header">
-  <img class="logo" src="../../../../assets/Streamscape.svg" routerLink="/">
+  <!-- <img class="logo" src="../../../../assets/Streamscape.svg" routerLink="/"> -->
+  <div class="logo">Streamscape</div>
   <div *ngIf="!usuario" class="login-button" routerLink="/login">Entrar</div>
   <div *ngIf="usuario" class="user-section" (click)="toggleMenu()">
-    <div class="user-name">
-      {{ usuario.nome }}
-    </div>
-    <div class="user-avatar">
-      {{ usuario.nome.charAt(0) }}
+    <div class="flex-container">
+      <div class="user-avatar">
+        {{ usuario.nome.charAt(0) }}
+      </div>
     </div>
     <div class="user-info" *ngIf="menuOpen">
       <div class="user-profile">
@@ -29,7 +29,7 @@
       <div class="menu">
         <ul>
           <li>
-            <div class="menu-button" role="button">Minha conta</div>
+            <div class="menu-button" role="button" routerLink="/account">Minha conta</div>
           </li>
           <li>
             <div class="menu-button logout" role="button" (click)="logout()">Sair</div>

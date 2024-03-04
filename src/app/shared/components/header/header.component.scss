@@ -8,9 +8,11 @@
 }
 
 .logo {
-    font-family: "Righteous", sans-serif;
+    font-family: "Exo 2", sans-serif;
     font-size: 30px;
+    font-weight: 600;
     color: #fff;
+    cursor: pointer;
 }
 
 .login-button {
@@ -33,6 +35,12 @@
     color: #fff;
     cursor: pointer;
     user-select: none;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .user-avatar,

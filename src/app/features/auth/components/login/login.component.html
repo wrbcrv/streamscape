@@ -1,9 +1,8 @@
 <div class="container">
-  <div class="message-container">
+  <div class="heading-wrapper">
     <div class="message message-header">Entrar</div>
     <div class="message">Digite o endereço de e-mail e a senha da sua conta.</div>
   </div>
-  <div class="bar"></div>
   <form class="login-form" (submit)="login()">
     <div class="form-group">
       <input 
@@ -24,7 +23,7 @@
         <input 
           class="form-control border-right" 
           placeholder="Senha"
-          type="{{showPassword ? 'text' : 'password'}}"
+          type="{{ showPassword ? 'text' : 'password' }}"
           id="senha" 
           name="senha" 
           [(ngModel)]="request.senha"

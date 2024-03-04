@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="heading">Conta</div>
+  <div class="account-details-wrapper">
+    <div class="account-details">
+      <div class="label flex-container">
+        Endereço de e-mail
+        <i class="fa-solid fa-pen fa-xs"></i>
+      </div>
+      <div class="value">{{ usuario?.email }}</div>
+    </div>
+    <div class="account-details">
+      <div class="label flex-container">
+        Senha
+        <i class="fa-solid fa-pen fa-xs"></i>
+      </div>
+      <div class="value">•••••••••••</div>
+    </div>
+    <div class="account-details">
+      <div class="label flex-container">
+        Nome de usuário
+        <i class="fa-solid fa-pen fa-xs"></i>
+      </div>
+      <div class="value">&#64;{{ usuario?.username }}</div>
+    
+    </div>
+    <div class="account-details">
+      <div class="label flex-container">
+        Nome
+        <i class="fa-solid fa-pen fa-xs"></i>
+      </div>
+      <div class="value">
+        {{ usuario?.nome }}
+        {{ usuario?.sobrenome }}
+      </div>
+    </div>
+  </div>
+</div>
