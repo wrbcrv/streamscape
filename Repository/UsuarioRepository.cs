@@ -2,7 +2,6 @@ using api.Data;
 using api.DTOs.Usuario;
 using api.Interfaces;
 using api.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

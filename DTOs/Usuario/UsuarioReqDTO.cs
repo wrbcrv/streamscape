@@ -11,11 +11,11 @@ namespace api.DTOs.Usuario
         [Required(ErrorMessage = "Sobrenome é obrigatório.")]
         public string Sobrenome { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Username é obrigatório.")]
+        [Required(ErrorMessage = "Nome de usuário é obrigatório.")]
         public string Username { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Email é obrigatório.")]
-        [EmailAddress(ErrorMessage = "E-mail deve ser um endereço de email válido.")]
+        [EmailAddress(ErrorMessage = "Seu e-mail deve ser neste formato: nome@example.com.")]
         public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Senha é obrigatório.")]

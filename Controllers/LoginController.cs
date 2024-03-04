@@ -2,6 +2,7 @@ using System.Security.Claims;
 using api.DTOs.Login;
 using api.Interfaces;
 using api.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,16 +29,10 @@ namespace api.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    var errors = ModelState
-                        .Where(x => x.Value.Errors.Any())
-                        .SelectMany(x => x.Value.Errors.Select(e => new { Field = x.Key, Message = e.ErrorMessage }))
-                        .ToList();
-
-                    return BadRequest(new { errors });
+                if (!ModelState.IsValid) {
+                    return BadRequest(ModelState);
                 }
-
+                
                 var usuario = await _usuarioRepository.FindByEmailAndSenhaAsync(request.Email, request.Senha);
 
                 if (usuario == null)
@@ -78,6 +73,17 @@ namespace api.Controllers
             }
 
             return Ok(new { token });
+        }
+
+        [HttpPost("logout")]
+        [AllowAnonymous]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("token");
+
+            HttpContext.SignOutAsync();
+
+            return Ok(new { message = "Logout bem-sucedido." });
         }
     }
 }
