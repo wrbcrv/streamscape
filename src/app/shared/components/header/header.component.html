@@ -1,40 +1,45 @@
 <header class="header">
-  <!-- <img class="logo" src="../../../../assets/Streamscape.svg" routerLink="/"> -->
-  <div class="logo">Streamscape</div>
+  <div class="logo" routerLink="/">Streamscape</div>
   <div *ngIf="!usuario" class="login-button" routerLink="/login">Entrar</div>
-  <div *ngIf="usuario" class="user-section" (click)="toggleMenu()">
-    <div class="flex-container">
+  <div *ngIf="usuario" class="flex-container">
+    <div class="widget">
+      <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    </div>
+    <div class="widget">
+      <i class="fa-regular fa-bookmark fa-lg"></i>
+    </div>
+    <div class="user-section" (clickOutside)="onClickOutside()" (click)="toggleMenu()">
       <div class="user-avatar">
         {{ usuario.nome.charAt(0) }}
       </div>
-    </div>
-    <div class="user-info" *ngIf="menuOpen">
-      <div class="user-profile">
-        <div class="user-credentials">
-          <div class="email">
-            {{ usuario.email }}
+      <div class="user-info" *ngIf="menuOpen">
+        <div class="user-profile">
+          <div class="user-credentials">
+            <div class="email">
+              {{ usuario.email }}
+            </div>
+            <div class="username">
+              &#64;{{ usuario.username }}
+            </div>
           </div>
-          <div class="username">
-            &#64;{{ usuario.username }}
+          <div class="avatar">
+            {{ usuario.nome.charAt(0) }}
+          </div>
+          <div class="fullname">
+            {{ usuario.nome }}
+            {{ usuario.sobrenome }}
           </div>
         </div>
-        <div class="avatar">
-          {{ usuario.nome.charAt(0) }}
+        <div class="menu">
+          <ul>
+            <li>
+              <div class="menu-button" role="button" routerLink="/account">Minha conta</div>
+            </li>
+            <li>
+              <div class="menu-button logout" role="button" (click)="logout()">Sair</div>
+            </li>
+          </ul>
         </div>
-        <div class="fullname">
-          {{ usuario.nome }}
-          {{ usuario.sobrenome }}
-        </div>
-      </div>
-      <div class="menu">
-        <ul>
-          <li>
-            <div class="menu-button" role="button" routerLink="/account">Minha conta</div>
-          </li>
-          <li>
-            <div class="menu-button logout" role="button" (click)="logout()">Sair</div>
-          </li>
-        </ul>
       </div>
     </div>
   </div>

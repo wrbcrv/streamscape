@@ -1,14 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { UsuarioService } from '../../../core/services/usuario.service';
+import { ClickOutsideModule } from 'ng-click-outside';
 import { Usuario } from '../../../core/models/usuario.model';
-import { CommonModule } from '@angular/common';
+import { UsuarioService } from '../../../core/services/usuario.service';
 import { AuthService } from '../../../features/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ClickOutsideModule
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -34,22 +39,26 @@ export class HeaderComponent implements OnInit {
   }
 
   getLoggedInUsuario(): void {
-    this.usuarioService.getLoggedInUsuario().subscribe((response) => {
-      this.usuario = response;
-    }, (error) => {
+    this.usuarioService.getLoggedInUsuario().subscribe((res) => {
+      this.usuario = res;
+    }, () => {
 
     })
   }
 
   logout(): void {
-    this.authService.logout().subscribe((response) => {
+    this.authService.logout().subscribe(() => {
       this.router.navigateByUrl('/login');
-    }, (error) => {
+    }, () => {
 
     })
   }
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+  }
+
+  onClickOutside(): void {
+    this.menuOpen = false;
   }
 }
