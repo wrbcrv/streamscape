@@ -25,9 +25,9 @@ namespace api.Services
         {
             var claims = new List<Claim>()
             {
-                new Claim(JwtRegisteredClaimNames.Sub, usuario.Email),
-                new Claim(ClaimTypes.NameIdentifier, usuario.Id),
-                new Claim(ClaimTypes.Name, usuario.UserName),
+                new(JwtRegisteredClaimNames.Sub, usuario.Email),
+                new(ClaimTypes.NameIdentifier, usuario.Id),
+                new(ClaimTypes.Name, usuario.UserName),
             };
 
             foreach (var role in roles)
@@ -51,6 +51,20 @@ namespace api.Services
             var token = handler.CreateToken(descriptor);
 
             return handler.WriteToken(token);
+        }
+
+        public DateTime GetTokenExpiration(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwt = handler.ReadToken(token) as JwtSecurityToken;
+            if (jwt?.ValidTo != null)
+            {
+                return jwt.ValidTo;
+            }
+            else
+            {
+                throw new ArgumentException("Token inválido.");
+            }
         }
     }
 }

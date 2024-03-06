@@ -44,8 +44,11 @@ namespace api.Controllers
 
                 var token = _tokenService.CreateToken(usuario, roles);
 
+                var expiration = _tokenService.GetTokenExpiration(token);
+
                 var options = new CookieOptions
                 {
+                    Expires = expiration,
                     HttpOnly = true,
                     Secure = true,
                     SameSite = SameSiteMode.None
