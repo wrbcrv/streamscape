@@ -13,6 +13,7 @@ namespace api.Data
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Titulo> Titulos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

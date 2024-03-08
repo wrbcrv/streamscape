@@ -89,11 +89,6 @@ namespace api.Controllers
             {
                 var usuario = await _usuarioRepository.CreateAsync(request);
 
-                if (usuario == null)
-                {
-                    return NotFound(new { message = "Usuário não encontrado." });
-                }
-
                 return Ok(usuario);
             }
             catch (Exception e)
