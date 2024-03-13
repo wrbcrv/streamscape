@@ -49,6 +49,7 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IHashService, BCryptHashService>();
 builder.Services.AddScoped<ITituloRepository, TituloRepository>();
+builder.Services.AddScoped<IFileRepository, FileRepository>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {

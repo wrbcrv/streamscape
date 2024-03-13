@@ -6,6 +6,7 @@ namespace api.DTOs.Titulo
         public string? Titulo { get; set; }
         public string? Sinopse { get; set; }
         public int Lancamento { get; set; }
+        public string? ThumbPath { get; set; }
 
         public static TituloResDTO valueOf(Models.Titulo titulo)
         {
@@ -17,7 +18,8 @@ namespace api.DTOs.Titulo
                 Id = titulo.Id,
                 Titulo = titulo.TituloStr,
                 Sinopse = titulo.Sinopse,
-                Lancamento = titulo.Lancamento
+                Lancamento = titulo.Lancamento,
+                ThumbPath = titulo.ThumbPath
             };
         }
     }
