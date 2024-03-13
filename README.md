@@ -1,1 +1,1 @@
-# streamscape
+# StreamScape - Plataforma de Streaming
