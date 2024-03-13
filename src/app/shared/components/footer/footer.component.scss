@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.icon,
+.flex-container {
+    display: flex;
+}
+
+.icon,
+.text {
+    color: #fff;
+}
+
+.icon {
+    gap: 5px;
+    align-items: center;
+}
+
+.icon > .flex-container:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.flex-container {
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.dot {
+
+}

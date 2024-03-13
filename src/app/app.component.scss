@@ -1,0 +1,11 @@
+app-footer {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    padding: 20px 40px;
+    position: absolute;
+    bottom: 0;
+}
