@@ -1,46 +1,46 @@
-<header class="header">
+<div class="flex justify-between py-6 px-10 border-b-[1px] border-b-neutral-900">
   <div class="logo" routerLink="/">Streamscape</div>
-  <div *ngIf="!usuario" class="login-button" routerLink="/login">Entrar</div>
-  <div *ngIf="usuario" class="flex-container">
-    <div class="widget">
+  <button *ngIf="!usuario" type="button" class="text-gray-800 bg-white hover:bg-gray-300 hover:text-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-[14px] px-[16px] py-[8px] dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 dark:text-white" routerLink="/login">Entrar</button>
+  <div ngClass="flex gap-[20px]" *ngIf="usuario" class="flex-container">
+    <div class="flex items-center justify-center text-white w-[35px] h-[35px] rounded-[50px] cursor-pointer hover:text-neutral-400">
       <i class="fa-solid fa-magnifying-glass fa-lg"></i>
     </div>
-    <div class="widget">
+    <div class="flex items-center justify-center text-white w-[35px] h-[35px] rounded-[50px] cursor-pointer hover:text-neutral-400">
       <i class="fa-regular fa-bookmark fa-lg"></i>
     </div>
-    <div class="user-section" (clickOutside)="onClickOutside()" (click)="toggleMenu()">
-      <div class="user-avatar">
+    <div (clickOutside)="onClickOutside()" (click)="toggleMenu()">
+      <div class="flex justify-center items-center w-[35px] h-[35px] text-white font-medium bg-slate-500 rounded-[50px] text-lg cursor-pointer">
         {{ usuario.nome.charAt(0) }}
       </div>
-      <div class="user-info" *ngIf="menuOpen">
-        <div class="user-profile">
-          <div class="user-credentials">
-            <div class="email">
+      <div class="absolute top-[75px] right-[40px] w-fit text-white font-medium text-[14px] border-[1px] border-neutral-900 rounded-[10px] overflow-hidden" *ngIf="menuOpen">
+        <div class="flex flex-col items-center p-[10px] min-w-[250px] bg-neutral-950">
+          <div class="text-center pb-[10px]">
+            <div class="mb-[5px]">
               {{ usuario.email }}
             </div>
-            <div class="username">
+            <div class="text-neutral-500">
               &#64;{{ usuario.username }}
             </div>
           </div>
-          <div class="avatar">
+          <div class="flex justify-center items-center w-[50px] h-[50px] text-white bg-slate-500 rounded-[50px] text-lg">
             {{ usuario.nome.charAt(0) }}
           </div>
-          <div class="fullname">
+          <div class="mt-[10px] text-[16px]">
             {{ usuario.nome }}
             {{ usuario.sobrenome }}
           </div>
         </div>
-        <div class="menu">
-          <ul>
-            <li>
-              <div class="menu-button" role="button" routerLink="/account">Minha conta</div>
+        <div class="p-[10px]">
+          <ul class="flex flex-col">
+            <li class="block p-[10px]">
+              <div class="hover:text-neutral-400" role="button" routerLink="/account">Minha conta</div>
             </li>
-            <li>
-              <div class="menu-button logout" role="button" (click)="logout()">Sair</div>
+            <li class="block p-[10px]">
+              <div class="text-red-600 hover:text-red-800" role="button" (click)="logout()">Sair</div>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-</header>
+</div>
