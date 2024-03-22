@@ -1,76 +1,75 @@
-<div class="container">
-  <div class="heading-wrapper">
-    <div class="message message-header">Criar conta</div>
-    <div class="message">Preencha o formulário abaixo para criar sua nova conta.</div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 font-medium">
+  <div class="mb-16">
+    <div class="text-white mb-2.5 text-4xl font-semibold text-center">Criar conta</div>
+    <div class="text-white text-center">Preencha o formulário abaixo para criar sua nova conta.</div>
   </div>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <input 
-        class="form-control"
+  <form class="flex flex-col gap-3 w-[512px]" (ngSubmit)="onSubmit()">
+    <div class="flex justify-between gap-3">
+      <div class="flex flex-col gap-3 flex-1">
+        <input
+          class="bg-neutral-900 text-white py-4 px-6 text-base w-full rounded-full outline-none placeholder:text-neutral-500"
+          type="text" 
+          placeholder="Nome" 
+          name="nome" 
+          [(ngModel)]="request.nome" />
+        <div *ngIf="errors.Nome" class="flex items-center gap-1 text-red-600 text-xs ml-6">
+          <span class="material-symbols-outlined text-sm">error</span>
+          {{ errors.Nome }}
+        </div>
+      </div>
+      <div class="flex flex-col gap-3 flex-1">
+        <input
+          class="bg-neutral-900 text-white py-4 px-6 text-base w-full rounded-full outline-none placeholder:text-neutral-500"
+          type="text" 
+          placeholder="Sobrenome" 
+          name="sobrenome" 
+          [(ngModel)]="request.sobrenome" />
+        <div *ngIf="errors.Sobrenome" class="flex items-center gap-1 text-red-600 text-xs ml-6">
+          <span class="material-symbols-outlined text-sm">error</span>
+          {{ errors.Sobrenome }}
+        </div>
+      </div>
+    </div>
+    <div>
+      <input
+        class="bg-neutral-900 text-white py-4 px-6 text-base w-full rounded-full outline-none placeholder:text-neutral-500"
         type="text" 
-        placeholder="Nome"
-        name="nome"
-        [(ngModel)]="request.nome"
-      />
+        placeholder="Nome de usuário" 
+        name="username" 
+        [(ngModel)]="request.username" />
     </div>
-    <div *ngIf="errors.Nome" class="error-message">
-      <span class="material-symbols-outlined error">error</span>
-      {{ errors.Nome }}
-    </div>
-    <div class="form-group">
-      <input 
-        class="form-control"
-        type="text" 
-        placeholder="Sobrenome"
-        name="sobrenome"
-        [(ngModel)]="request.sobrenome"
-      />
-    </div>
-    <div *ngIf="errors.Sobrenome" class="error-message">
-      <span class="material-symbols-outlined error">error</span>
-      {{ errors.Sobrenome }}
-    </div>
-    <div class="form-group">
-      <input 
-        class="form-control"
-        type="text" 
-        placeholder="Nome de usuário"
-        name="username"
-        [(ngModel)]="request.username"
-      />
-    </div>
-    <div *ngIf="errors.Username" class="error-message">
-      <span class="material-symbols-outlined error">error</span>
+    <div *ngIf="errors.Username" class="flex items-center gap-1 text-red-600 text-xs ml-6">
+      <span class="material-symbols-outlined text-sm">error</span>
       {{ errors.Username }}
     </div>
-    <div class="form-group">
-      <input 
-        class="form-control"
-        type="email" 
-        placeholder="Email"
-        name="email"
-        [(ngModel)]="request.email"
-      />
+    <div>
+      <input
+        class="bg-neutral-900 text-white py-4 px-6 text-base w-full rounded-full outline-none placeholder:text-neutral-500"
+        type="email"
+        placeholder="Email" 
+        name="email" 
+        [(ngModel)]="request.email" />
     </div>
-    <div *ngIf="errors.Email" class="error-message">
-      <span class="material-symbols-outlined error">error</span>
+    <div *ngIf="errors.Email" class="flex items-center gap-1 text-red-600 text-xs ml-6">
+      <span class="material-symbols-outlined text-sm">error</span>
       {{ errors.Email }}
     </div>
-    <div class="form-group">
-      <input 
-        class="form-control"
+    <div>
+      <input
+        class="bg-neutral-900 text-white py-4 px-6 text-base w-full rounded-full outline-none placeholder:text-neutral-500"
         type="password" 
-        placeholder="Senha"
-        name="senha"
-        [(ngModel)]="request.senha"
-      />
+        placeholder="Senha" 
+        name="senha" 
+        [(ngModel)]="request.senha" />
     </div>
-    <div *ngIf="errors.Senha" class="error-message">
-      <span class="material-symbols-outlined error">error</span>
+    <div *ngIf="errors.Senha" class="flex items-center gap-1 text-red-600 text-xs ml-6">
+      <span class="material-symbols-outlined text-sm">error</span>
       {{ errors.Senha }}
     </div>
-    <div class="form-group">
-      <button type="submit" class="btn">Criar conta</button>
+    <div>
+      <button type="submit"
+        class="w-full text-black bg-white hover:bg-neutral-300 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-base py-4 px-6">Criar
+        conta</button>
     </div>
   </form>
 </div>
