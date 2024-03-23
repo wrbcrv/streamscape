@@ -8,6 +8,7 @@ namespace api.Repository
         Task<List<Titulo>> GetAllAsync();
         Task<Titulo?> GetByIdAsync(int id);
         Task<Titulo> CreateAsync(TituloReqDTO request);
+        Task<bool> RemoveAsync(int id);
         Task<Titulo> AddImageAsync(int tituloId, IFormFile image);
         Task<byte[]> DownloadImageAsync(int tituloId);
     }

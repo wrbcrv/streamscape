@@ -74,6 +74,28 @@ namespace api.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Remove([FromRoute] int id)
+        {
+            try
+            {
+                var success = await _tituloRepository.RemoveAsync(id);
+
+                if (!success)
+                {
+                    return NotFound(new { message = "Título não encontrado." });
+                }
+
+                return Ok(new { message = "Título removido com sucesso." });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
         [HttpPost]
         [Route("{id}/thumb/upload")]
         [AllowAnonymous]

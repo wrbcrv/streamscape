@@ -82,5 +82,20 @@ namespace api.Repository
 
             return _fileRepository.DownloadFile(titulo.ThumbPath);
         }
+
+        public async Task<bool> RemoveAsync(int id)
+        {
+            var titulo = await _context.Titulos.FindAsync(id);
+
+            if (titulo == null)
+            {
+                return false;
+            }
+
+            _context.Titulos.Remove(titulo);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }
