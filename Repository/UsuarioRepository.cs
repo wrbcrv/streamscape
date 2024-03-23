@@ -32,6 +32,20 @@ namespace api.Repository
 
         public async Task<Usuario> CreateAsync(UsuarioReqDTO request)
         {
+            var emailAlreadyInUse = await _userManager.FindByEmailAsync(request.Email);
+
+            if (emailAlreadyInUse != null)
+            {
+                throw new Exception("Este e-mail já está sendo usado por outro usuário.");
+            }
+
+            var usrnmAlreadyInUse = await _userManager.FindByNameAsync(request.Username);
+
+            if (usrnmAlreadyInUse != null)
+            {
+                throw new Exception("Este nome de usuário já está sendo usado por outro usuário.");
+            }
+
             string hashed = _hashService.HashPassword(request.Senha);
 
             var usuario = new Usuario

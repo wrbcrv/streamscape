@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wBQP+FRVusePSy3wsFWIS07KIwuBunJJy7iXPCatkOM=",
+  "Hash": "hXKMQ51oquvu0Q2FB++O6ABejfbDT6lCOf5PosukNw4=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "api\\wwwroot",
       "Source": "api",
-      "ContentRoot": "C:\\Users\\werbt\\OneDrive\\Documents\\streamscape\\api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Werbton\\Documents\\streamscape\\api\\wwwroot\\",
       "BasePath": "_content/api",
       "Pattern": "**"
     }

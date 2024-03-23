@@ -26,7 +26,7 @@ namespace api.Controllers
             {
                 var titulos = await _tituloRepository.GetAllAsync();
 
-                var response = titulos.Select(TituloResDTO.valueOf).ToList();
+                var response = titulos.Select(TituloResDTO.ValueOf).ToList();
 
                 return Ok(response);
             }

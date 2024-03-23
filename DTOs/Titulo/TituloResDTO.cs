@@ -8,7 +8,7 @@ namespace api.DTOs.Titulo
         public int Lancamento { get; set; }
         public string? ThumbPath { get; set; }
 
-        public static TituloResDTO valueOf(Models.Titulo titulo)
+        public static TituloResDTO ValueOf(Models.Titulo titulo)
         {
             if (titulo == null)
                 return null;
