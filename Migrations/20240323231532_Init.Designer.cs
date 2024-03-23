@@ -12,8 +12,8 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240323174343_AdicionarCategoriaAoTitulo")]
-    partial class AdicionarCategoriaAoTitulo
+    [Migration("20240323231532_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,9 +179,6 @@ namespace api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Categoria")
-                        .HasColumnType("int");
 
                     b.Property<int>("Lancamento")
                         .HasColumnType("int");
