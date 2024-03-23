@@ -1,41 +1,41 @@
 <div class="flex justify-between py-6 px-10 border-b-[1px] border-b-neutral-900">
   <div class="logo" routerLink="/">Streamscape</div>
-  <button *ngIf="!usuario" type="button" class="text-gray-800 bg-white hover:bg-gray-300 hover:text-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-[14px] px-[16px] py-[8px] dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 dark:text-white" routerLink="/login">Entrar</button>
-  <div ngClass="flex gap-[20px]" *ngIf="usuario" class="flex-container">
-    <div class="flex items-center justify-center text-white w-[35px] h-[35px] rounded-[50px] cursor-pointer hover:text-neutral-400">
+  <button *ngIf="!usuario" type="button" class="text-gray-800 bg-white hover:bg-gray-300 hover:text-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 dark:text-white" routerLink="/login">Entrar</button>
+  <div ngClass="flex gap-5" *ngIf="usuario" class="flex-container">
+    <div class="flex items-center justify-center text-white w-9 h-9 cursor-pointer hover:text-neutral-400">
       <i class="fa-solid fa-magnifying-glass fa-lg"></i>
     </div>
-    <div class="flex items-center justify-center text-white w-[35px] h-[35px] rounded-[50px] cursor-pointer hover:text-neutral-400">
+    <div class="flex items-center justify-center text-white w-9 h-9 cursor-pointer hover:text-neutral-400">
       <i class="fa-regular fa-bookmark fa-lg"></i>
     </div>
     <div (clickOutside)="onClickOutside()" (click)="toggleMenu()">
-      <div class="flex justify-center items-center w-[35px] h-[35px] text-white font-medium bg-slate-500 rounded-[50px] text-lg cursor-pointer">
+      <div class="flex justify-center items-center w-9 h-9 text-white font-medium bg-slate-500 rounded-full text-lg cursor-pointer">
         {{ usuario.nome.charAt(0) }}
       </div>
-      <div class="absolute top-[75px] right-[40px] w-fit text-white font-medium text-[14px] border-[1px] border-neutral-900 rounded-[10px] overflow-hidden" *ngIf="menuOpen">
-        <div class="flex flex-col items-center p-[10px] min-w-[250px] bg-neutral-950">
-          <div class="text-center pb-[10px]">
-            <div class="mb-[5px]">
+      <div class="absolute top-[75px] right-10 w-fit text-white font-medium text-sm border-[1px] border-neutral-900 rounded-xl overflow-hidden" *ngIf="menuOpen">
+        <div class="flex flex-col items-center p-3 min-w-[250px] bg-neutral-950">
+          <div class="text-center pb-3">
+            <div class="mb-1">
               {{ usuario.email }}
             </div>
             <div class="text-neutral-500">
               &#64;{{ usuario.username }}
             </div>
           </div>
-          <div class="flex justify-center items-center w-[50px] h-[50px] text-white bg-slate-500 rounded-[50px] text-lg">
+          <div class="flex justify-center items-center w-12 h-12 text-white bg-slate-500 rounded-full text-lg">
             {{ usuario.nome.charAt(0) }}
           </div>
-          <div class="mt-[10px] text-[16px]">
+          <div class="mt-3 text-base">
             {{ usuario.nome }}
             {{ usuario.sobrenome }}
           </div>
         </div>
-        <div class="p-[10px]">
+        <div class="p-3">
           <ul class="flex flex-col">
-            <li class="block p-[10px]">
+            <li class="block p-3">
               <div class="hover:text-neutral-400" role="button" routerLink="/account">Minha conta</div>
             </li>
-            <li class="block p-[10px]">
+            <li class="block p-3">
               <div class="text-red-600 hover:text-red-800" role="button" (click)="logout()">Sair</div>
             </li>
           </ul>
