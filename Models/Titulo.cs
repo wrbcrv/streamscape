@@ -9,6 +9,7 @@ namespace api.Models
         public string TituloStr { get; set; } = string.Empty;
         public string Sinopse { get; set; } = string.Empty;
         public int Lancamento { get; set; }
+        public List<Genero> Generos { get; set; } = new List<Genero>();
         public string ThumbPath { get; set; } = string.Empty;
     }
 }

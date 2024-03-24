@@ -33,7 +33,9 @@ namespace api.Repository
             {
                 TituloStr = request.Titulo,
                 Sinopse = request.Sinopse,
-                Lancamento = request.Lancamento
+                Lancamento = request.Lancamento,
+                ThumbPath = request.ThumbPath,
+                Generos = request.Generos.Select(g => Enum.TryParse<Genero>(g, true, out var genre) ? genre : Genero.Outro).ToList()
             };
 
             await _context.Titulos.AddAsync(titulo);
