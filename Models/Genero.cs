@@ -12,16 +12,18 @@ namespace api.Models
         Comedia,
         [Display(Name = "Drama")]
         Drama,
-        [Display(Name = "Ficção Científica")]
-        FiccaoCientifica,
         [Display(Name = "Terror")]
         Terror,
+        [Display(Name = "Ficção Científica")]
+        FiccaoCientifica,
         [Display(Name = "Romance")]
         Romance,
         [Display(Name = "Documentário")]
         Documentario,
-        [Display(Name = "Anime")]
-        Anime,
+        [Display(Name = "Animação")]
+        Animacao,
+        [Display(Name = "Suspense")]
+        Suspense,
         [Display(Name = "Outro")]
         Outro
     }

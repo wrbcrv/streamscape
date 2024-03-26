@@ -11,5 +11,7 @@ namespace api.Repository
         Task<bool> RemoveAsync(int id);
         Task<Titulo> AddImageAsync(int tituloId, IFormFile image);
         Task<byte[]> DownloadImageAsync(int tituloId);
+        Task<Titulo> AddBannerAsync(int tituloId, IFormFile banner);
+        Task<byte[]> DownloadBannerAsync(int tituloId);
     }
 }

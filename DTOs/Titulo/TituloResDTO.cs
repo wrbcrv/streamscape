@@ -11,20 +11,28 @@ namespace api.DTOs.Titulo
         public string? Titulo { get; set; }
         public string? Sinopse { get; set; }
         public int Lancamento { get; set; }
-        public List<string> Generos { get; set; } = new List<string>();
-        public string? ThumbPath { get; set; }
+        public List<string>? Generos { get; set; }
+        public string? Classificacao { get; set; }
+        public string? Thumb { get; set; }
+        public string? Banner { get; set; }
 
-        public static TituloResDTO ValueOf(Models.Titulo titulo)
+        public static TituloResDTO? ValueOf(Models.Titulo titulo)
         {
             if (titulo == null)
-                return null;
-
-            var displayed = new List<string>();
-            foreach (var genero in titulo.Generos)
             {
-                var display = typeof(Genero).GetField(genero.ToString()).GetCustomAttributes(typeof(DisplayAttribute), false)[0] as DisplayAttribute;
-                displayed.Add(display.Name);
+                return null;
             }
+
+            List<string> generos = new List<string>();
+
+            foreach (Genero genero in titulo.Generos)
+            {
+                var genDisplayAttr = typeof(Genero)?.GetField(genero.ToString())?.GetCustomAttributes(typeof(DisplayAttribute), false)[0] as DisplayAttribute;
+                generos.Add(genDisplayAttr.Name);
+            }
+
+            var classifDisplayAttr = typeof(Classificacao)?.GetField(titulo.Classificacao.ToString())?.GetCustomAttributes(typeof(DisplayAttribute), false)[0] as DisplayAttribute;
+            var classifDisplay = classifDisplayAttr?.Name;
 
             return new TituloResDTO
             {
@@ -32,8 +40,10 @@ namespace api.DTOs.Titulo
                 Titulo = titulo.TituloStr,
                 Sinopse = titulo.Sinopse,
                 Lancamento = titulo.Lancamento,
-                Generos = displayed,
-                ThumbPath = titulo.ThumbPath,
+                Generos = generos,
+                Classificacao = classifDisplay,
+                Thumb = titulo.Thumb,
+                Banner = titulo.Banner
             };
         }
     }

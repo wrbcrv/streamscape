@@ -34,55 +34,14 @@ namespace api.Repository
                 TituloStr = request.Titulo,
                 Sinopse = request.Sinopse,
                 Lancamento = request.Lancamento,
-                ThumbPath = request.ThumbPath,
-                Generos = request.Generos.Select(g => Enum.TryParse<Genero>(g, true, out var genre) ? genre : Genero.Outro).ToList()
+                Generos = request.Generos,
+                Classificacao = request.Classificacao
             };
 
             await _context.Titulos.AddAsync(titulo);
             await _context.SaveChangesAsync();
 
             return titulo;
-        }
-
-        public async Task<Titulo> AddImageAsync(int tituloId, IFormFile image)
-        {
-            var titulo = await _context.Titulos.FindAsync(tituloId);
-
-            if (titulo == null)
-            {
-                throw new ArgumentException("Título não encontrado.");
-            }
-
-            if (!_fileRepository.IsImage(image.FileName))
-            {
-                throw new ArgumentException("Somente arquivos de imagem são permitidos.");
-            }
-
-            string folder = Path.Combine("C:\\", "Uploads");
-            string thumbPath = await _fileRepository.SaveFileAsync(image, folder);
-            titulo.ThumbPath = thumbPath;
-
-            _context.Titulos.Update(titulo);
-            await _context.SaveChangesAsync();
-
-            return titulo;
-        }
-
-        public async Task<byte[]> DownloadImageAsync(int tituloId)
-        {
-            var titulo = await _context.Titulos.FindAsync(tituloId);
-
-            if (titulo == null)
-            {
-                throw new ArgumentException("Título não encontrado.");
-            }
-
-            if (string.IsNullOrEmpty(titulo.ThumbPath))
-            {
-                throw new ArgumentException("A imagem do título não está disponível.");
-            }
-
-            return _fileRepository.DownloadFile(titulo.ThumbPath);
         }
 
         public async Task<bool> RemoveAsync(int id)
@@ -98,6 +57,69 @@ namespace api.Repository
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<Titulo> AddImageAsync(int tituloId, IFormFile image)
+        {
+            var titulo = await _context.Titulos.FindAsync(tituloId) ?? throw new ArgumentException("Título não encontrado.");
+
+            if (!_fileRepository.IsImage(image.FileName))
+            {
+                throw new ArgumentException("Somente arquivos de imagem são permitidos.");
+            }
+
+            string folder = Path.Combine("C:\\", "Uploads");
+            string thumbPath = await _fileRepository.SaveFileAsync(image, folder);
+            titulo.Thumb = thumbPath;
+
+            _context.Titulos.Update(titulo);
+            await _context.SaveChangesAsync();
+
+            return titulo;
+        }
+
+        public async Task<Titulo> AddBannerAsync(int tituloId, IFormFile banner)
+        {
+            var titulo = await _context.Titulos.FindAsync(tituloId) ?? throw new ArgumentException("Título não encontrado.");
+
+            if (!_fileRepository.IsImage(banner.FileName))
+            {
+                throw new ArgumentException("Somente arquivos de imagem são permitidos.");
+            }
+
+            string folder = Path.Combine("C:\\", "Banners");
+            string bannerPath = await _fileRepository.SaveFileAsync(banner, folder);
+            titulo.Banner = bannerPath;
+
+            _context.Titulos.Update(titulo);
+            await _context.SaveChangesAsync();
+
+            return titulo;
+        }
+
+        public async Task<byte[]> DownloadBannerAsync(int tituloId)
+        {
+            var titulo = await _context.Titulos.FindAsync(tituloId) ?? throw new ArgumentException("Título não encontrado.");
+
+            if (string.IsNullOrEmpty(titulo.Banner))
+            {
+                throw new ArgumentException("O banner do título não está disponível.");
+            }
+
+            return _fileRepository.DownloadFile(titulo.Banner);
+        }
+
+
+        public async Task<byte[]> DownloadImageAsync(int tituloId)
+        {
+            var titulo = await _context.Titulos.FindAsync(tituloId) ?? throw new ArgumentException("Título não encontrado.");
+
+            if (string.IsNullOrEmpty(titulo.Thumb))
+            {
+                throw new ArgumentException("A imagem do título não está disponível.");
+            }
+
+            return _fileRepository.DownloadFile(titulo.Thumb);
         }
     }
 }

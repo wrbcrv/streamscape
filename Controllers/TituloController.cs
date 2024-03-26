@@ -19,12 +19,17 @@ namespace api.Controllers
 
 
         [HttpGet]
-        [AllowAnonymous]
+        /* [AllowAnonymous] */
         public async Task<IActionResult> GetAll()
         {
             try
             {
                 var titulos = await _tituloRepository.GetAllAsync();
+
+                if (titulos == null)
+                {
+                    return NotFound();
+                }
 
                 var response = titulos.Select(TituloResDTO.ValueOf).ToList();
 
@@ -38,7 +43,7 @@ namespace api.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [AllowAnonymous]
+        /* [AllowAnonymous] */
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             try
@@ -59,7 +64,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        /* [Authorize(Roles = "Admin")] */
         public async Task<IActionResult> Create([FromBody] TituloReqDTO request)
         {
             try
@@ -76,7 +81,7 @@ namespace api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        [Authorize(Roles = "Admin")]
+        /* [Authorize(Roles = "Admin")] */
         public async Task<IActionResult> Remove([FromRoute] int id)
         {
             try
@@ -98,7 +103,7 @@ namespace api.Controllers
 
         [HttpPost]
         [Route("{id}/thumb/upload")]
-        [AllowAnonymous]
+        /* [AllowAnonymous] */
         public async Task<IActionResult> UploadImage([FromRoute] int id, [FromForm] FileUploadModel model)
         {
             try
@@ -122,12 +127,57 @@ namespace api.Controllers
 
         [HttpGet]
         [Route("{id}/thumb/download")]
-        [AllowAnonymous]
+        /* [AllowAnonymous] */
         public async Task<IActionResult> DownloadImage([FromRoute] int id)
         {
             try
             {
                 byte[] data = await _tituloRepository.DownloadImageAsync(id);
+
+                return File(data, "image/jpeg");
+            }
+            catch (ArgumentException e)
+            {
+                return NotFound(new { message = e.Message });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("{id}/banner/upload")]
+        /* [AllowAnonymous] */
+        public async Task<IActionResult> UploadBanner([FromRoute] int id, [FromForm] FileUploadModel model)
+        {
+            try
+            {
+                var titulo = await _tituloRepository.GetByIdAsync(id);
+
+                if (titulo == null)
+                {
+                    return NotFound(new { message = "Título não encontrado." });
+                }
+
+                var bannerPath = await _tituloRepository.AddBannerAsync(id, model.File);
+
+                return Ok(new { message = "Banner adicionado com sucesso.", bannerPath });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}/banner/download")]
+        /* [AllowAnonymous] */
+        public async Task<IActionResult> DownloadBanner([FromRoute] int id)
+        {
+            try
+            {
+                byte[] data = await _tituloRepository.DownloadBannerAsync(id);
 
                 return File(data, "image/jpeg");
             }
