@@ -47,6 +47,7 @@ namespace Api.Services
 
             var user = _mapper.Map<User>(userDTO);
             user.Password = _passwordHasher.Hash(userDTO.Password);
+            user.CreatedAt = DateTime.UtcNow;
             user = await _userRepository.AddAsync(user);
             return UserResponseDTO.ValueOf(user);
         }
