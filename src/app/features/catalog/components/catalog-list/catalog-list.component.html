@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <h2>Recomendados para você</h2>
+  @for (item of items; track $index) {
+    <div class="item-thumbnails">
+      <div>
+        <div class="thumbnail-inner"></div>
+        <div>{{ item.name }}</div>
+      </div>
+    </div>
+  }
+</div>

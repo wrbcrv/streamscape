@@ -1,0 +1,19 @@
+.wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+.item-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(384px, 1fr));
+    gap: 10px;
+}
+
+.thumbnail-inner {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 384px;
+    height: 216px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
