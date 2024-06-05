@@ -1,0 +1,41 @@
+<div class="centralize">
+  <div class="login-container">
+    <h1>Entrar</h1>
+    <h5>Por favor, insira suas credenciais para continuar.</h5>
+    <form (ngSubmit)="login()" class="login-form">
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="E-mail ou nome de usuário"
+          type="text"
+          id="username"
+          [(ngModel)]="username"
+          name="username"
+          required
+        />
+      </div>
+      @if (messages['Username']) {
+        <div class="error-message">{{ messages['Username'] }}</div>
+      }
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="Senha"
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+        />
+      </div>
+      @if (messages['Password']) {
+        <div class="error-message">{{ messages['Password'] }}</div>
+      }
+      <button type="submit" class="btn btn-primary">Login</button>
+      <div class="redirect-container">
+        <span>Não tem uma conta? </span>
+        <span routerLink="/register" class="redirect">Cadastre-se</span>
+      </div>
+    </form>
+  </div>
+</div>

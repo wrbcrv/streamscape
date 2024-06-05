@@ -1,0 +1,69 @@
+<div class="centralize">
+  <div class="login-container">
+    <h1>Registrar</h1>
+    <h5>Por favor, preencha os campos para criar uma conta.</h5>
+    <form (ngSubmit)="submit()" class="login-form">
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="E-mail"
+          type="email"
+          id="email"
+          [(ngModel)]="form.email"
+          name="email"
+          required
+        />
+      </div>
+      @if (messages['Email']) {
+        <div class="error-message">{{ messages['Email'] }}</div>
+      }
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="Nome de usuário"
+          type="text"
+          id="username"
+          [(ngModel)]="form.username"
+          name="username"
+          required
+        />
+      </div>
+      @if (messages['Username']) {
+        <div class="error-message">{{ messages['Username'] }}</div>
+      }
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="Senha"
+          type="password"
+          id="password"
+          [(ngModel)]="form.password"
+          name="password"
+          required
+        />
+      </div>
+      @if (messages['Password']) {
+        <div class="error-message">{{ messages['Password'] }}</div>
+      }
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="Repita a senha"
+          type="password"
+          id="repeat"
+          [(ngModel)]="form.repeat"
+          name="repeat"
+          required
+        />
+      </div>
+      @if (messages['Repeat']) {
+        <div class="error-message">{{ messages['Repeat'] }}</div>
+      }
+      <button type="submit" class="btn btn-primary">Registrar</button>
+      <div class="redirect-container">
+        <span>Já tem uma conta? </span>
+        <span routerLink="/login" class="redirect">Entrar</span>
+      </div>
+    </form>
+  </div>
+</div>

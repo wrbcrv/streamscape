@@ -1,0 +1,69 @@
+.btn {
+    background-color: #fff;
+    border: none;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #eee;
+}
+
+.centralize {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+.error-message {
+    color: #EF233C;
+    font-size: 14px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.form-control {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    border: none;
+    border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.login-container {
+    height: auto;
+    text-align: center;
+    width: 512px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.redirect {
+    cursor: pointer;
+}
+
+.redirect-container {
+    font-size: 14px;
+}
+
+.redirect:hover {
+    text-decoration: underline;
+}

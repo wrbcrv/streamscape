@@ -1,0 +1,94 @@
+.avatar {
+    background-color: #fff;
+    border-radius: 50px;
+}
+
+.flex-container {
+    align-items: center;
+    gap: 20px;
+}
+
+.header,
+.flex-container,
+.icon,
+.menu-overlay,
+.menu {
+    display: flex;
+}
+
+.header {
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 50px;
+}
+
+.icon {
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+}
+
+.logo {
+    cursor: pointer;
+    font-family: 'Russo One', sans-serif;
+    font-size: 30px;
+    user-select: none;
+}
+
+.search {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 30px;
+    outline: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    background-color: rgba($color: #000, $alpha: 0.2) !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 24px;
+}
+
+.bar {
+    background-color: rgba($color: #fff, $alpha: 0.2);
+    width: 100%;
+    height: 1px;
+}
+
+.option,
+.email {
+    display: block;
+    cursor: pointer;
+    font-size: 30px;
+    user-select: none;
+}
+
+.option:hover {
+    text-decoration: underline;
+}
+
+.username {
+    font-size: 18px;
+}
