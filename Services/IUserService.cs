@@ -9,6 +9,6 @@ namespace Api.Services
         Task<UserResponseDTO> AddAsync(UserDTO userDto);
         Task<UserResponseDTO> UpdateAsync(int id, UserDTO userDto);
         Task<bool> DeleteAsync(int id);
-        Task<UserResponseDTO> GetByUsernameAndPassword(string username, string password);
+        Task<UserResponseDTO> GetByUsernameOrEmailAndPassword(string usernameOrEmail, string password);
     }
 }

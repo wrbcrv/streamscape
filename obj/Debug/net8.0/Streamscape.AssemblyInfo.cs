@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Streamscape")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47ebd59b7cd9af765590f3b7b22e7143ed2e9c09")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ef88ff5fff0d9062e725a66a60d3e67fef35a91")]
 [assembly: System.Reflection.AssemblyProductAttribute("Streamscape")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Streamscape")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

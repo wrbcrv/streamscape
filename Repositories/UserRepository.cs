@@ -50,5 +50,10 @@ namespace Api.Repositories
         {
             return await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
         }
+
+        public async Task<User> GetByUsernameOrEmailAsync(string usernameOrEmail)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == usernameOrEmail || u.Email == usernameOrEmail);
+        }
     }
 }

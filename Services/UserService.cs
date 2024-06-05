@@ -38,6 +38,11 @@ namespace Api.Services
 
         public async Task<UserResponseDTO> AddAsync(UserDTO userDTO)
         {
+            if (userDTO.Password != userDTO.Repeat)
+            {
+                throw new ArgumentException("As senhas não coincidem.");
+            }
+
             var existing = await _userRepository.GetByUsernameAsync(userDTO.Username);
 
             if (existing != null)
@@ -76,7 +81,7 @@ namespace Api.Services
         public async Task<bool> DeleteAsync(int id)
         {
             var user = await _userRepository.GetByIdAsync(id);
-            
+
             if (user == null)
             {
                 throw new KeyNotFoundException("User not found.");
@@ -85,9 +90,9 @@ namespace Api.Services
             return await _userRepository.DeleteAsync(id);
         }
 
-        public async Task<UserResponseDTO> GetByUsernameAndPassword(string username, string password)
+        public async Task<UserResponseDTO> GetByUsernameOrEmailAndPassword(string usernameOrEmail, string password)
         {
-            var user = await _userRepository.GetByUsernameAsync(username);
+            var user = await _userRepository.GetByUsernameOrEmailAsync(usernameOrEmail);
 
             if (user == null || !_passwordHasher.Verify(user.Password, password))
             {

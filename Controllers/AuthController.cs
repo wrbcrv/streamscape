@@ -23,7 +23,7 @@ namespace ProductApi.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginDTO loginDTO)
         {
-            var user = await _userService.GetByUsernameAndPassword(loginDTO.Username, loginDTO.Password);
+            var user = await _userService.GetByUsernameOrEmailAndPassword(loginDTO.Username, loginDTO.Password);
 
             if (user == null)
             {
