@@ -107,18 +107,18 @@ namespace Api.Controllers
             }
         }
 
-        [HttpPost("{titleId}/episodes")]
+        [HttpPost("{title_id}/episodes")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<EpisodeResponseDTO>> AddEpisode(int titleId, EpisodeDTO episodeDTO)
+        public async Task<IActionResult> AddEpisode(int title_id, [FromForm] UploadDTO episodeDTO)
         {
             try
             {
-                var episode = await _titleService.AddEpisodeAsync(titleId, episodeDTO);
-                return CreatedAtAction(nameof(GetById), new { id = episode.Id }, episode);
+                var episode = await _titleService.AddEpisodeAsync(title_id, episodeDTO);
+                return Ok(episode);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return BadRequest(ex.Message);
             }
         }
     }

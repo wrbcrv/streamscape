@@ -9,6 +9,6 @@ namespace Api.Services
         Task<TitleResponseDTO> AddAsync(TitleDTO titleDto);
         Task<TitleResponseDTO> UpdateAsync(int id, TitleDTO titleDto);
         Task<bool> DeleteAsync(int id);
-        Task<EpisodeResponseDTO> AddEpisodeAsync(int titleId, EpisodeDTO episodeDTO);
+        Task<EpisodeResponseDTO> AddEpisodeAsync(int titleId, UploadDTO episodeDTO);
     }
 }

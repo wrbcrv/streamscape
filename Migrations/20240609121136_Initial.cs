@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -46,9 +47,11 @@ namespace Streamscape.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
                     Username = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
-                    Role = table.Column<int>(type: "INTEGER", nullable: false)
+                    Role = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,6 +64,7 @@ namespace Streamscape.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Source = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     TitleId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -115,6 +119,11 @@ namespace Streamscape.Migrations
                     { 9, "Independent" },
                     { 10, "Sci-Fi & Fantasy" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "CreatedAt", "Email", "Password", "Role", "Username" },
+                values: new object[] { 1, new DateTime(2024, 6, 9, 12, 11, 36, 329, DateTimeKind.Utc).AddTicks(7876), "admin@example.com", "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC", 0, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Episodes_TitleId",

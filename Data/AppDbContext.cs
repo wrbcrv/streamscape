@@ -33,6 +33,17 @@ namespace UserApi.Data
                 new Genre { Id = 9, Name = "Independent" },
                 new Genre { Id = 10, Name = "Sci-Fi & Fantasy" }
             );
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Email = "admin@example.com",
+                    Username = "admin",
+                    Password = "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC",
+                    Role = Role.Admin,
+                    CreatedAt = DateTime.UtcNow
+                }
+            );
         }
     }
 }

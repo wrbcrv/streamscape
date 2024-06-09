@@ -11,8 +11,8 @@ using UserApi.Data;
 namespace Streamscape.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240601113052_EmailAndCreatedAt")]
-    partial class EmailAndCreatedAt
+    [Migration("20240609121136_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,10 @@ namespace Streamscape.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Source")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -171,6 +175,17 @@ namespace Streamscape.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 6, 9, 12, 11, 36, 329, DateTimeKind.Utc).AddTicks(7876),
+                            Email = "admin@example.com",
+                            Password = "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC",
+                            Role = 0,
+                            Username = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Api.Models.Episode", b =>

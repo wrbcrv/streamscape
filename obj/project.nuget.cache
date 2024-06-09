@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0n+HBbBUKbaz+kLFPabclo4m6LDg124pMofmvDJlyLFX2uaW5IlxK+SgpqZDQIvHRHl0UOzPCpRP0Ihh4Ujqzw==",
+  "dgSpecHash": "cOyEggUwge1moLeZej+lmjnD6z37Vi9oCMVeF+t0cEW/qPrWwAedUe3WhkBiGSurcETP1KURZfbsNLiIgneubw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\Streamscape.csproj",
+  "projectFilePath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\api\\Streamscape.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\werbt\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\werbt\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

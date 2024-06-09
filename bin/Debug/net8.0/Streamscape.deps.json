@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.5",
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.5",
           "Swashbuckle.AspNetCore": "6.6.2",
+          "Swashbuckle.AspNetCore.Filters": "8.0.2",
           "System.IdentityModel.Tokens.Jwt": "7.5.2"
         },
         "runtime": {
@@ -533,6 +534,18 @@
           }
         }
       },
+      "Scrutor/3.3.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.DependencyModel": "8.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Scrutor.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
         "dependencies": {
           "SQLitePCLRaw.lib.e_sqlite3": "2.1.6",
@@ -677,6 +690,29 @@
           "Swashbuckle.AspNetCore.Swagger": "6.6.2",
           "Swashbuckle.AspNetCore.SwaggerGen": "6.6.2",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.6.2"
+        }
+      },
+      "Swashbuckle.AspNetCore.Filters/8.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.OpenApi": "1.6.14",
+          "Scrutor": "3.3.0",
+          "Swashbuckle.AspNetCore.Filters.Abstractions": "8.0.2",
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.6.2"
+        },
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll": {
+            "assemblyVersion": "8.0.2.0",
+            "fileVersion": "8.0.2.0"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.2": {
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll": {
+            "assemblyVersion": "8.0.2.0",
+            "fileVersion": "8.0.2.0"
+          }
         }
       },
       "Swashbuckle.AspNetCore.Swagger/6.6.2": {
@@ -1102,6 +1138,13 @@
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
     },
+    "Scrutor/3.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BwqCnFzp2/Z+pq17iztxlIkR/ZANyPRR4PdE57WL1w/JW4AM/2imoxBWTL3+G+YXA46ce4s9OUgwWqTXYrtI8A==",
+      "path": "scrutor/3.3.0",
+      "hashPath": "scrutor.3.3.0.nupkg.sha512"
+    },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
       "type": "package",
       "serviceable": true,
@@ -1136,6 +1179,20 @@
       "sha512": "sha512-+NB4UYVYN6AhDSjW0IJAd1AGD8V33gemFNLPaxKTtPkHB+HaKAKf9MGAEUPivEWvqeQfcKIw8lJaHq6LHljRuw==",
       "path": "swashbuckle.aspnetcore/6.6.2",
       "hashPath": "swashbuckle.aspnetcore.6.6.2.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Filters/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S4pR+265NwY9saAhK+3Jn2oL2Wfy0qvy9871b0KiEPW/iLPRgg2HrkrdMwC1wpjNkRXWGDFRRj+LkUD4lyuAaQ==",
+      "path": "swashbuckle.aspnetcore.filters/8.0.2",
+      "hashPath": "swashbuckle.aspnetcore.filters.8.0.2.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RgQ1RbxmofrkBSrLkA/34DWwzz4rKHRwC4vHOvevru2CNqymUPn3kRhbIX29g4yvj2sCff1glf19djnyM9kuUQ==",
+      "path": "swashbuckle.aspnetcore.filters.abstractions/8.0.2",
+      "hashPath": "swashbuckle.aspnetcore.filters.abstractions.8.0.2.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/6.6.2": {
       "type": "package",

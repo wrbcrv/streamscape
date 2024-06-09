@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using YourProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,13 +21,17 @@ builder.Services.AddScoped<ITitleService, TitleService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IFileService, FileService>();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200").WithMethods("GET", "POST", "PUT", "DELETE").AllowAnyHeader();
+            builder.WithOrigins("http://localhost:4200")
+                   .WithMethods("GET", "POST", "PUT", "DELETE")
+                   .AllowAnyHeader();
         });
 });
 

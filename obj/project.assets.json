@@ -3501,11 +3501,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\Streamscape.csproj",
+      "projectUniqueName": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\api\\Streamscape.csproj",
       "projectName": "Streamscape",
-      "projectPath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\Streamscape.csproj",
+      "projectPath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\api\\Streamscape.csproj",
       "packagesPath": "C:\\Users\\werbt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\streamscape\\obj\\",
+      "outputPath": "C:\\Users\\werbt\\OneDrive\\Documents\\GitHub\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\werbt\\AppData\\Roaming\\NuGet\\NuGet.Config"

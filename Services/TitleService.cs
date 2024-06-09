@@ -10,13 +10,15 @@ namespace Api.Services
         private readonly ITitleRepository _titleRepository;
         private readonly IEpisodeRepository _episodeRepository;
         private readonly IGenreRepository _genreRepository;
+        private readonly IFileService _fileService;
         private readonly IMapper _mapper;
 
-        public TitleService(ITitleRepository titleRepository, IEpisodeRepository episodeRepository, IGenreRepository genreRepository, IMapper mapper)
+        public TitleService(ITitleRepository titleRepository, IEpisodeRepository episodeRepository, IGenreRepository genreRepository, IFileService fileService, IMapper mapper)
         {
             _titleRepository = titleRepository;
             _episodeRepository = episodeRepository;
             _genreRepository = genreRepository;
+            _fileService = fileService;
             _mapper = mapper;
         }
 
@@ -87,7 +89,7 @@ namespace Api.Services
             return await _titleRepository.DeleteAsync(id);
         }
 
-        public async Task<EpisodeResponseDTO> AddEpisodeAsync(int titleId, EpisodeDTO episodeDTO)
+        public async Task<EpisodeResponseDTO> AddEpisodeAsync(int titleId, UploadDTO episodeDTO)
         {
             var title = await _titleRepository.GetByIdAsync(titleId);
 
@@ -96,8 +98,17 @@ namespace Api.Services
                 throw new KeyNotFoundException("Title not found.");
             }
 
-            var episode = _mapper.Map<Episode>(episodeDTO);
-            episode.TitleId = titleId;
+            var episode = new Episode
+            {
+                Name = episodeDTO.Name,
+                TitleId = titleId
+            };
+
+            if (episodeDTO.File != null)
+            {
+                var source = await _fileService.UploadAsync(episodeDTO.File);
+                episode.Source = source;
+            }
 
             episode = await _episodeRepository.AddAsync(episode);
             return EpisodeResponseDTO.ValueOf(episode);
