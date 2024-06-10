@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { User } from '../../../core/models/user.model';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   user: User | null = null;
   visible: boolean = false;
   header: boolean = true;
+  transparent: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -34,9 +35,11 @@ export class HeaderComponent implements OnInit {
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
       const current = this.router.url;
-      this.header = !['/login', '/register'].includes(current);
+      this.header = !['/login', '/register'].includes(current) && !/^\/watch\/\w+\/\w+/.test(current);
       this.close();
     });
+
+    this.onWindowScroll();
   }
 
   toggle(): void {
@@ -54,5 +57,11 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const offset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.transparent = offset === 0 && !['/login', '/register'].includes(this.router.url);
   }
 }

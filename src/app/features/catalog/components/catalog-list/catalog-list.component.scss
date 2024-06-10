@@ -1,19 +1,26 @@
 .wrapper {
-    width: 90%;
+    width: 85%;
     margin: auto;
 }
 
-.item-thumbnails {
+.item-thumbnails-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(384px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(384px, 0fr));
+    justify-content: space-between;
 }
 
 .thumbnail-inner {
-    background-color: #fff;
+    background-color: #e6e6e6;
     border-radius: 10px;
     width: 384px;
     height: 216px;
     margin-bottom: 10px;
     cursor: pointer;
+}
+
+.thumbnail-title {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

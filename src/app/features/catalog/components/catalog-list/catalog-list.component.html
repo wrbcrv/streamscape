@@ -1,11 +1,11 @@
 <div class="wrapper">
   <h2>Recomendados para você</h2>
-  @for (item of items; track $index) {
-    <div class="item-thumbnails">
-      <div>
+  <div class="item-thumbnails-grid">
+    @for (item of items; track $index) {
+      <div class="item" routerLink="/title/{{ item.id }}">
         <div class="thumbnail-inner"></div>
-        <div>{{ item.name }}</div>
+        <div class="thumbnail-title">{{ item.name }}</div>
       </div>
-    </div>
-  }
+    }
+  </div>
 </div>

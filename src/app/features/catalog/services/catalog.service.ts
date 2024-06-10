@@ -16,4 +16,12 @@ export class CatalogService {
   getAll(): Observable<Title[]> {
     return this.http.get<Title[]>(this.apiUrl);
   }
+
+  getById(id: string): Observable<Title> {
+    return this.http.get<Title>(`${this.apiUrl}/${id}`);
+  }
+
+  download(tid: string, eid: string): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/${tid}/episodes/${eid}/download`, { responseType: 'blob' });
+  }
 }

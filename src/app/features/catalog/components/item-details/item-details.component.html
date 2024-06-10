@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="hero">
+    <div class="background-image"></div>
+    <div class="gradient-overlay"></div>
+    <div class="content">
+      @if (item) {
+        <div class="details">
+          <h1 class="name">{{ item.name }}</h1>    
+          <div class="options">
+            @for (episode of item.episodes; track $index) {
+              @if ($index === 0) {
+                <button class="button" (click)="play(episode.id)"><img src="../../../../../assets/icons/play_arrow_48dp_FILL1_wght400_GRAD0_opsz48.svg"></button>
+              }
+            }
+            <button class="button"><img src="../../../../../assets/icons/add_48dp_FILL1_wght400_GRAD0_opsz48.svg"></button>
+          </div>
+          <p class="description">{{ item.description }}</p>
+          @for (genre of item.genres; track $index) {
+            <p>{{ genre.name }}</p>
+          }
+          <p class="release">{{ item.release }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>
