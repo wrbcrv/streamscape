@@ -45,5 +45,15 @@ namespace Api.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<Episode?> GetLastEpisodeByTitleIdAsync(int titleId)
+        {
+            if (_context.Episodes != null)
+            {
+                return await _context.Episodes.Where(e => e.TitleId == titleId).OrderByDescending(e => e.Number).FirstOrDefaultAsync();
+            }
+
+            return null;
+        }
     }
 }

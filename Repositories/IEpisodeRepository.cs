@@ -9,5 +9,6 @@ namespace Api.Repositories
         Task<Episode> AddAsync(Episode entity);
         Task<Episode> UpdateAsync(Episode entity);
         Task<bool> DeleteAsync(int id);
+        Task<Episode> GetLastEpisodeByTitleIdAsync(int titleId);
     }
 }

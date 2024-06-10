@@ -2,6 +2,7 @@ using Api.Repositories;
 using AutoMapper;
 using Api.DTOs;
 using Api.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Services
 {
@@ -98,10 +99,20 @@ namespace Api.Services
                 throw new KeyNotFoundException("Title not found.");
             }
 
+            var last = await _episodeRepository.GetLastEpisodeByTitleIdAsync(titleId);
+            int next = 1;
+
+            if (last != null)
+            {
+                next = last.Number + 1;
+            }
+
             var episode = new Episode
             {
+                Number = next,
                 Name = episodeDTO.Name,
-                TitleId = titleId
+                Description = episodeDTO.Description,
+                TitleId = titleId,
             };
 
             if (episodeDTO.File != null)
@@ -112,6 +123,27 @@ namespace Api.Services
 
             episode = await _episodeRepository.AddAsync(episode);
             return EpisodeResponseDTO.ValueOf(episode);
+        }
+
+        public async Task<FileStreamResult> DownloadEpisodeAsync(int titleId, int episodeId)
+        {
+            var title = await _titleRepository.GetByIdAsync(titleId);
+
+            if (title == null)
+            {
+                throw new KeyNotFoundException("Title not found.");
+            }
+
+            var episode = await _episodeRepository.GetByIdAsync(episodeId);
+
+            if (episode == null || episode.TitleId != titleId)
+            {
+                throw new KeyNotFoundException("Episode not found or does not belong to the specified title.");
+            }
+
+            var fileStreamResult = await _fileService.DownloadAsync(episode.Source);
+
+            return fileStreamResult;
         }
     }
 }

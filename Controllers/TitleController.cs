@@ -121,5 +121,19 @@ namespace Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("{title_id}/episodes/{episode_id}/download")]
+        public async Task<IActionResult> DownloadEpisode(int title_id, int episode_id)
+        {
+            try
+            {
+                var result = await _titleService.DownloadEpisodeAsync(title_id, episode_id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

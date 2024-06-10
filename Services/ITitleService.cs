@@ -1,4 +1,5 @@
 using Api.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Services
 {
@@ -10,5 +11,6 @@ namespace Api.Services
         Task<TitleResponseDTO> UpdateAsync(int id, TitleDTO titleDto);
         Task<bool> DeleteAsync(int id);
         Task<EpisodeResponseDTO> AddEpisodeAsync(int titleId, UploadDTO episodeDTO);
+        Task<FileStreamResult> DownloadEpisodeAsync(int titleId, int episodeId);
     }
 }

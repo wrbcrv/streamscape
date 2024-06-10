@@ -417,6 +417,3 @@ C:\Users\werbt\OneDrive\Documents\GitHub\api\obj\Debug\net8.0\refint\Streamscape
 C:\Users\werbt\OneDrive\Documents\GitHub\api\obj\Debug\net8.0\Streamscape.pdb
 C:\Users\werbt\OneDrive\Documents\GitHub\api\obj\Debug\net8.0\Streamscape.genruntimeconfig.cache
 C:\Users\werbt\OneDrive\Documents\GitHub\api\obj\Debug\net8.0\ref\Streamscape.dll
-C:\Users\werbt\OneDrive\Documents\GitHub\api\bin\Debug\net8.0\Scrutor.dll
-C:\Users\werbt\OneDrive\Documents\GitHub\api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
-C:\Users\werbt\OneDrive\Documents\GitHub\api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
