@@ -5,6 +5,7 @@ namespace Api.DTOs
     public class TitleResponseDTO
     {
         public int Id { get; set; }
+        public string Thumbnail { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int Release { get; set; }
@@ -16,6 +17,7 @@ namespace Api.DTOs
             return new TitleResponseDTO
             {
                 Id = title.Id,
+                Thumbnail = title.Thumbnail,
                 Name = title.Name,
                 Description = title.Description,
                 Release = title.Release,

@@ -57,6 +57,12 @@ namespace Api.Services
                 title.TitleGenres.Add(new TitleGenre { Title = title, Genre = genre });
             }
 
+            if (titleDTO.File != null)
+            {
+                var thumbnailSource = await _fileService.UploadAsync(titleDTO.File);
+                title.Thumbnail = thumbnailSource;
+            }
+
             title = await _titleRepository.AddAsync(title);
             return TitleResponseDTO.ValueOf(title);
         }
@@ -142,6 +148,25 @@ namespace Api.Services
             }
 
             var fileStreamResult = await _fileService.DownloadAsync(episode.Source);
+
+            return fileStreamResult;
+        }
+
+        public async Task<FileStreamResult> DownloadThumbnailAsync(int titleId)
+        {
+            var title = await _titleRepository.GetByIdAsync(titleId);
+
+            if (title == null)
+            {
+                throw new KeyNotFoundException("Title not found.");
+            }
+
+            if (string.IsNullOrEmpty(title.Thumbnail))
+            {
+                throw new FileNotFoundException("Thumbnail not found.");
+            }
+
+            var fileStreamResult = await _fileService.DownloadAsync(title.Thumbnail);
 
             return fileStreamResult;
         }

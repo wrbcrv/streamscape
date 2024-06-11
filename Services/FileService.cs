@@ -23,16 +23,9 @@ namespace YourProject.Services
                 throw new ArgumentException("Nenhum arquivo fornecido para upload.");
             }
 
-            if (!file.ContentType.StartsWith("video/"))
+            if (!file.ContentType.StartsWith("video/") && !file.ContentType.StartsWith("image/"))
             {
-                throw new ArgumentException("O arquivo fornecido não é um vídeo.");
-            }
-
-            long size = 1024 * 1024 * 1024;
-            
-            if (file.Length > size)
-            {
-                throw new ArgumentException("O tamanho do arquivo excede o limite permitido.");
+                throw new ArgumentException("O arquivo fornecido não é um vídeo ou uma imagem.");
             }
 
             var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);

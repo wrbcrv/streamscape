@@ -54,7 +54,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<TitleResponseDTO>> Add(TitleDTO titleDTO)
+        public async Task<ActionResult<TitleResponseDTO>> Add([FromForm] TitleDTO titleDTO)
         {
             try
             {
@@ -107,13 +107,13 @@ namespace Api.Controllers
             }
         }
 
-        [HttpPost("{title_id}/episodes")]
+        [HttpPost("{tid}/episodes")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddEpisode(int title_id, [FromForm] UploadDTO episodeDTO)
+        public async Task<IActionResult> AddEpisode(int tid, [FromForm] UploadDTO episodeDTO)
         {
             try
             {
-                var episode = await _titleService.AddEpisodeAsync(title_id, episodeDTO);
+                var episode = await _titleService.AddEpisodeAsync(tid, episodeDTO);
                 return Ok(episode);
             }
             catch (Exception ex)
@@ -122,17 +122,33 @@ namespace Api.Controllers
             }
         }
 
-        [HttpGet("{title_id}/episodes/{episode_id}/download")]
-        public async Task<IActionResult> DownloadEpisode(int title_id, int episode_id)
+        [HttpGet("{tid}/episodes/{eid}/download")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<IActionResult> DownloadEpisode(int tid, int eid)
         {
             try
             {
-                var result = await _titleService.DownloadEpisodeAsync(title_id, episode_id);
+                var result = await _titleService.DownloadEpisodeAsync(tid, eid);
                 return result;
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{tid}/thumbnail")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<IActionResult> DownloadThumbnail(int tid)
+        {
+            try
+            {
+                var result = await _titleService.DownloadThumbnailAsync(tid);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
     }

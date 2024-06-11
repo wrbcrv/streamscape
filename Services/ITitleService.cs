@@ -12,5 +12,6 @@ namespace Api.Services
         Task<bool> DeleteAsync(int id);
         Task<EpisodeResponseDTO> AddEpisodeAsync(int titleId, UploadDTO episodeDTO);
         Task<FileStreamResult> DownloadEpisodeAsync(int titleId, int episodeId);
+        Task<FileStreamResult> DownloadThumbnailAsync(int titleId);
     }
 }

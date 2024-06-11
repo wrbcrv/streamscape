@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http;
+
 namespace Api.DTOs
 {
     public class TitleDTO
@@ -6,5 +8,6 @@ namespace Api.DTOs
         public string Description { get; set; } = string.Empty;
         public int Release { get; set; }
         public List<int> GenreIds { get; set; } = new List<int>();
+        public IFormFile? File { get; set; }
     }
 }
