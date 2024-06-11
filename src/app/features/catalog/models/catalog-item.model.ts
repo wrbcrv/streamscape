@@ -3,6 +3,7 @@ import { Genre } from "./genre.model";
 
 export interface Title {
     id: number;
+    thumbnail: string;
     name: string;
     description: string;
     release: number;

@@ -1,3 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+.hero {
+    font-family: "Roboto Condensed", sans-serif;
+    position: relative;
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    font-size: 18px;
+    margin-bottom: 48px;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 135%;
+    background-color: rgba(255, 255, 255, 0.25);
+    background-size: cover;
+    background-position: center;
+}
+
+.gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(farthest-side at 73% 21%, transparent, rgb(0, 0, 0));
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    color: #fff;
+    width: 50%;
+    margin-left: 50px;
+}
+
+.name {
+    margin: 18px 0 18px 0;
+}
+
+.goto {
+    border-radius: 10px !important;
+    width: 200px !important;
+    height: auto !important;
+    padding: 10px 20px;
+}
+
+.options {
+    display: flex;
+    gap: 20px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    font-weight: 500;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: rgba(#fff, 0.8);
+}
+
+.button>img {
+    font-size: 20px;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transition: background 0.3s;
+
+        &.active {
+            background: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
 .wrapper {
     width: 85%;
     margin: auto;
@@ -10,6 +153,7 @@
 }
 
 .thumbnail-inner {
+    overflow: hidden;
     background-color: #e6e6e6;
     border-radius: 10px;
     width: 384px;
@@ -23,4 +167,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.thumbnail {
+    width: inherit;
+    height: inherit;
 }

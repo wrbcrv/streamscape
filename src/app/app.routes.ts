@@ -23,7 +23,7 @@ export const routes: Routes = [
     title: 'Streamscape – Criar conta'
   },
   {
-    path: 'title/:id',
+    path: 'watch/:id',
     component: ItemDetailsComponent,
     resolve: {
       item: itemResolver

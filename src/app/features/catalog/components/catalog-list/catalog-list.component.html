@@ -1,9 +1,45 @@
+<div class="hero">
+  <div class="background-image" [ngStyle]="{'background-image': 'url(' + items[index].thumbnail + ')'}"></div>
+  <div class="gradient-overlay"></div>
+  <div class="carousel">
+    <button (click)="prev()" class="nav prev">
+      <img src="../../../../../assets/icons/chevron_left_48dp_FILL0_wght400_GRAD0_opsz48.svg">
+    </button>
+    <button (click)="next()" class="nav next">
+      <img src="../../../../../assets/icons/chevron_right_48dp_FILL0_wght400_GRAD0_opsz48.svg">
+    </button>
+    <div class="content">
+      @if (items.length > 0) {
+        @for (item of items; track $index) {
+          <div [class.active]="$index === index">
+            @if ($index === index) {
+              <div class="details">
+                <h1 class="name">{{ item.name }}</h1>
+                <p>{{ item.release }}</p>
+                <button class="button goto" routerLink="/watch/{{ item.id }}">Ver mais</button> 
+              </div>
+            }
+          </div>
+        }
+      }
+    </div>
+  </div>
+  <div class="dots">
+    @for (item of items; track $index) {
+      <span class="dot" [class.active]="$index === index"></span>
+    }
+  </div>
+</div>
 <div class="wrapper">
   <h2>Recomendados para você</h2>
   <div class="item-thumbnails-grid">
     @for (item of items; track $index) {
-      <div class="item" routerLink="/title/{{ item.id }}">
-        <div class="thumbnail-inner"></div>
+      <div class="item" routerLink="/watch/{{ item.id }}">
+        <div class="thumbnail-inner">
+          @if (item.thumbnail) {
+            <img class="thumbnail" [src]="item.thumbnail">
+          }
+        </div>
         <div class="thumbnail-title">{{ item.name }}</div>
       </div>
     }

@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="hero">
-    <div class="background-image"></div>
+    <div class="background-image" [ngStyle]="{'background-image': 'url(' + item?.thumbnail + ')'}"></div>
     <div class="gradient-overlay"></div>
     <div class="content">
       @if (item) {

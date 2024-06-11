@@ -22,6 +22,14 @@ export class CatalogService {
   }
 
   download(tid: string, eid: string): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/${tid}/episodes/${eid}/download`, { responseType: 'blob' });
+    return this.http.get(`${this.apiUrl}/${tid}/episodes/${eid}/download`, {
+      responseType: 'blob'
+    });
+  }
+
+  thumbnail(tid: string): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/${tid}/thumbnail`, {
+      responseType: 'blob'
+    });
   }
 }
