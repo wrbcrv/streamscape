@@ -5,7 +5,6 @@
     box-sizing: border-box;
     color: #000;
     cursor: pointer;
-    font-size: 14px;
     font-weight: 500;
     outline: none;
     padding: 15px 20px;
@@ -25,7 +24,6 @@
 
 .error-message {
     color: #EF233C;
-    font-size: 14px;
     padding-left: 20px;
     text-align: left;
 }
@@ -33,11 +31,9 @@
 .form-control {
     background-color: rgba($color: #fff, $alpha: 0.1);
     border: none;
-    border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
     border-radius: 100px;
     box-sizing: border-box;
     color: #fff;
-    font-size: 14px;
     font-weight: 500;
     outline: none;
     padding: 15px 20px;
@@ -48,6 +44,15 @@
     height: auto;
     text-align: center;
     width: 512px;
+    font-size: 18px;
+}
+
+.login-container > h1 {
+    font-size: 48px;
+}
+
+.login-container > h5 {
+    font-size: 18px;
 }
 
 .login-form {
@@ -58,10 +63,6 @@
 
 .redirect {
     cursor: pointer;
-}
-
-.redirect-container {
-    font-size: 14px;
 }
 
 .redirect:hover {

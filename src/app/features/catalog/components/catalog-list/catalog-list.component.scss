@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-
 .hero {
-    font-family: "Roboto Condensed", sans-serif;
     position: relative;
     width: 100%;
     height: 800px;
@@ -41,6 +38,7 @@
 }
 
 .name {
+    font-size: 48px;
     margin: 18px 0 18px 0;
 }
 
@@ -49,6 +47,7 @@
     width: 200px !important;
     height: auto !important;
     padding: 10px 20px;
+    font-weight: 700 !important;
 }
 
 .options {
@@ -56,11 +55,17 @@
     gap: 20px;
 }
 
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
 .button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    background-color: #fff;
+    color: #000;
     border: none;
     outline: none;
     border-radius: 100px;
@@ -144,6 +149,7 @@
 .wrapper {
     width: 85%;
     margin: auto;
+    margin-bottom: 48px;
 }
 
 .item-thumbnails-grid {

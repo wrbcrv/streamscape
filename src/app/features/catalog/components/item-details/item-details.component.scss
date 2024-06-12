@@ -40,7 +40,7 @@
     left: 0;
     z-index: 1;
     color: #fff;
-    width: 50%;
+    width: 40%;
     margin-left: 50px;
 }
 
@@ -50,27 +50,22 @@
 
 .options {
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 100px;
-    font-weight: 500;
-    width: 80px;
-    height: 80px;
+    gap: 6px;
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px 20px;
+    font-weight: 700;
     cursor: pointer;
+    border: none;
 }
 
 .button:hover {
     background: rgba($color: #fff, $alpha: 0.8);
-}
-
-.button > img {
-    font-size: 20px;
 }

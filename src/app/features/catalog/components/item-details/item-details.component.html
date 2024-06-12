@@ -5,14 +5,16 @@
     <div class="content">
       @if (item) {
         <div class="details">
-          <h1 class="name">{{ item.name }}</h1>    
+          <h1 class="name">{{ item.name }}</h1>
           <div class="options">
-            @for (episode of item.episodes; track $index) {
-              @if ($index === 0) {
-                <button class="button" (click)="play(episode.id)"><img src="../../../../../assets/icons/play_arrow_48dp_FILL1_wght400_GRAD0_opsz48.svg"></button>
-              }
-            }
-            <button class="button"><img src="../../../../../assets/icons/add_48dp_FILL1_wght400_GRAD0_opsz48.svg"></button>
+            <button class="button" (click)="play(item.episodes[0].id)">
+              <img src="../../../../../assets/icons/play_arrow.svg">
+              Assistir agora
+            </button>
+            <button class="button">
+              <img src="../../../../../assets/icons/add.svg">
+              Minha lista
+            </button>
           </div>
           <p class="description">{{ item.description }}</p>
           @for (genre of item.genres; track $index) {
