@@ -103,5 +103,25 @@ namespace UserApi.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpPost("{uid}/titles/{tid}")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult<UserResponseDTO>> AddToMyList(int uid, int tid)
+        {
+            try
+            {
+                var (user, message) = await _userService.AddToMyList(uid, tid);
+                return Ok(new { Message = message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
     }
 }

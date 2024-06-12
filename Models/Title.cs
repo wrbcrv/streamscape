@@ -9,5 +9,6 @@ namespace Api.Models
         public int Release { get; set; }
         public ICollection<Episode> Episodes { get; set; } = new List<Episode>();
         public ICollection<TitleGenre> TitleGenres { get; set; } = new List<TitleGenre>();
+        public ICollection<User> Users { get; set; } = new List<User>();
     }
 }

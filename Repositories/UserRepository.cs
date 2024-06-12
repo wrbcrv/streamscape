@@ -15,8 +15,9 @@ namespace Api.Repositories
 
         public async Task<User> GetByIdAsync(int id)
         {
-            return await _context.Users.FindAsync(id);
+            return await _context.Users.Include(u => u.MyList).ThenInclude(t => t.Episodes).Include(u => u.MyList).FirstOrDefaultAsync(u => u.Id == id);
         }
+
 
         public async Task<User> AddAsync(User user)
         {

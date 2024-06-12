@@ -21,6 +21,7 @@ namespace UserApi.Data
             modelBuilder.Entity<TitleGenre>().HasKey(tg => new { tg.TitleId, tg.GenreId });
             modelBuilder.Entity<TitleGenre>().HasOne(tg => tg.Title).WithMany(t => t.TitleGenres).HasForeignKey(tg => tg.TitleId);
             modelBuilder.Entity<TitleGenre>().HasOne(tg => tg.Genre).WithMany(g => g.TitleGenres).HasForeignKey(tg => tg.GenreId);
+            modelBuilder.Entity<User>().HasMany(u => u.MyList).WithMany(t => t.Users).UsingEntity(j => j.ToTable("UserTitles"));
             modelBuilder.Entity<Genre>().HasData(
                 new Genre { Id = 1, Name = "Action & Adventure" },
                 new Genre { Id = 2, Name = "Anime" },

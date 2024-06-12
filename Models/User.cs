@@ -7,6 +7,7 @@ namespace Api.Models
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public Role Role { get; set; }
+        public ICollection<Title> MyList { get; set; } = new List<Title>();
         public DateTime CreatedAt { get; set; }
     }
 }

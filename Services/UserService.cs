@@ -9,12 +9,14 @@ namespace Api.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly ITitleRepository _titleRepository;
         private readonly IPasswordHasher _passwordHasher;
 
-        public UserService(IUserRepository userRepository, IMapper mapper, IPasswordHasher passwordHasher)
+        public UserService(IUserRepository userRepository, IMapper mapper, ITitleRepository titleRepository, IPasswordHasher passwordHasher)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _titleRepository = titleRepository;
             _passwordHasher = passwordHasher;
         }
 
@@ -47,7 +49,7 @@ namespace Api.Services
 
             if (existing != null)
             {
-                throw new InvalidOperationException("Username already exists.");
+                throw new InvalidOperationException("Este nome de usuário já está em uso.");
             }
 
             var user = _mapper.Map<User>(userDTO);
@@ -100,6 +102,40 @@ namespace Api.Services
             }
 
             return UserResponseDTO.ValueOf(user);
+        }
+
+        public async Task<(UserResponseDTO user, string message)> AddToMyList(int uid, int tid)
+        {
+            var user = await _userRepository.GetByIdAsync(uid);
+
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found.");
+            }
+
+            var title = await _titleRepository.GetByIdAsync(tid);
+
+            if (title == null)
+            {
+                throw new KeyNotFoundException("Title not found.");
+            }
+
+            string message;
+
+            if (user.MyList.Contains(title))
+            {
+                user.MyList.Remove(title);
+                message = "Removido da minha lista";
+            }
+            else
+            {
+                user.MyList.Add(title);
+                message = "Adicionado à minha lista";
+            }
+
+            await _userRepository.UpdateAsync(user);
+
+            return (UserResponseDTO.ValueOf(user), message);
         }
     }
 }
