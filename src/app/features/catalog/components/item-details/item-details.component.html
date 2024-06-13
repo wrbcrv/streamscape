@@ -11,6 +11,7 @@
       @if (item) {
         <div class="details">
           <h1 class="name">{{ item.name }}</h1>
+          <p class="release">{{ item.release }}</p>
           <div class="options">
             <button class="button" (click)="play(item.episodes[0].id)">Assistir agora</button>
             @if (user) {
@@ -19,9 +20,8 @@
           </div>
           <p class="description">{{ item.description }}</p>
           @for (genre of item.genres; track $index) {
-            <p>{{ genre.name }}</p>
+            <p>{{ genre.type }}</p>
           }
-          <p class="release">{{ item.release }}</p>
         </div>
       }
     </div>

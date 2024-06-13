@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
-import { User } from '../../../core/models/user.model';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
+import { User } from '../../../core/models/user.model';
+import { AuthService } from '../../../core/services/auth.service';
 import { SearchComponent } from '../../../features/catalog/components/search/search.component';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-header',
@@ -12,17 +13,18 @@ import { SearchComponent } from '../../../features/catalog/components/search/sea
   imports: [
     CommonModule,
     RouterModule,
-    SearchComponent
+    SearchComponent,
+    MenuComponent
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   user: User | null = null;
-  visible: boolean = false;
   header: boolean = true;
   transparent: boolean = false;
-  isSearchOpen: boolean = false;
+  search: boolean = false;
+  menu: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -39,27 +41,18 @@ export class HeaderComponent implements OnInit {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
       const current = this.router.url;
       this.header = !['/login', '/register'].includes(current) && !/^\/watch\/\w+\/\w+/.test(current);
-      this.close();
+      this.closeMenu();
     });
 
     this.onWindowScroll();
   }
 
-  toggle(): void {
-    this.visible = !this.visible;
+  toggleMenu(): void {
+    this.menu = !this.menu;
   }
 
-  close(event?: MouseEvent): void {
-    if (event && (event.target as HTMLElement).classList.contains('menu-overlay')) {
-      this.visible = false;
-    } else if (!event) {
-      this.visible = false;
-    }
-  }
-
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+  closeMenu(): void {
+    this.menu = false;
   }
 
   @HostListener('window:scroll', [])
@@ -69,12 +62,12 @@ export class HeaderComponent implements OnInit {
   }
 
   openSearch(): void {
-    this.isSearchOpen = true;
+    this.search = true;
     document.body.classList.add('scroll');
   }
 
   closeSearch(): void {
-    this.isSearchOpen = false;
+    this.search = false;
     document.body.classList.remove('scroll');
   }
 }

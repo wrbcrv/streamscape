@@ -1,0 +1,11 @@
+<div class="menu-overlay" (click)="close($event)">
+  <div class="menu" (click)="$event.stopPropagation()">
+    <div class="user-info">
+      <span class="email">{{ user?.email }}</span>
+      <span class="username">{{ '@' + user?.username }}</span>
+    </div>
+    <span class="option">Configurações</span>
+    <span class="option">Conta</span>
+    <span class="option" (click)="logout()">Sair</span>
+  </div>
+</div>
