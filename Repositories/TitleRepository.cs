@@ -45,5 +45,11 @@ namespace Api.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<IEnumerable<Title>> SearchAsync(string query)
+        {
+            query = query.ToLower();
+            return await _context.Titles.Where(t => t.Name.ToLower().Contains(query) || t.Description.ToLower().Contains(query)).ToListAsync();
+        }
     }
 }

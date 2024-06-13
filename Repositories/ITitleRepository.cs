@@ -9,5 +9,6 @@ namespace Api.Repositories
         Task<Title> AddAsync(Title entity);
         Task<Title> UpdateAsync(Title entity);
         Task<bool> DeleteAsync(int id);
+        Task<IEnumerable<Title>> SearchAsync(string query);
     }
 }

@@ -151,5 +151,20 @@ namespace Api.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet("search")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult<IEnumerable<TitleResponseDTO>>> Search([FromQuery] string query)
+        {
+            try
+            {
+                var titles = await _titleService.SearchAsync(query);
+                return Ok(titles);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

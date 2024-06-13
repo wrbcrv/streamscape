@@ -13,5 +13,6 @@ namespace Api.Services
         Task<EpisodeResponseDTO> AddEpisodeAsync(int titleId, UploadDTO episodeDTO);
         Task<FileStreamResult> DownloadEpisodeAsync(int titleId, int episodeId);
         Task<FileStreamResult> DownloadThumbnailAsync(int titleId);
+        Task<IEnumerable<TitleResponseDTO>> SearchAsync(string search);
     }
 }

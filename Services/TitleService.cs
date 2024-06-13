@@ -170,5 +170,10 @@ namespace Api.Services
 
             return fileStreamResult;
         }
+        public async Task<IEnumerable<TitleResponseDTO>> SearchAsync(string query)
+        {
+            var titles = await _titleRepository.SearchAsync(query);
+            return titles.Select(TitleResponseDTO.ValueOf);
+        }
     }
 }
