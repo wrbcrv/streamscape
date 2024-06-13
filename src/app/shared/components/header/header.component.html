@@ -3,7 +3,7 @@
     <span class="logo" routerLink="/">Streamscape</span>
     @if (user) {
       <div class="flex-container">
-        <input type="text" class="search" placeholder="Pesquisar">
+        <div class="search" (click)="openSearch()">Pesquisar...</div>
         <div class="icon">
           <i class="fa-regular fa-bell"></i>
         </div>
@@ -23,4 +23,7 @@
       </div>
     </div>
   }
+}
+@if (isSearchOpen) {
+  <app-search (closeSearch)="closeSearch()"></app-search>
 }

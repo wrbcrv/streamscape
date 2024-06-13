@@ -32,4 +32,8 @@ export class CatalogService {
       responseType: 'blob'
     });
   }
+
+  search(query: string): Observable<Title[]> {
+    return this.http.get<Title[]>(`${this.apiUrl}/search?query=${query}`);
+  }
 }

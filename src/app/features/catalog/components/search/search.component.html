@@ -1,0 +1,20 @@
+<div class="search-overlay">
+  <div class="search-container">
+    <input #input class="search" type="text" placeholder="Pesquisar..." (input)="onSearch(input.value)">
+    @if (results.length > 0) {
+      <div class="search-results">
+        <h1 class="search-info">Resultados para: "{{ search }}"</h1>
+        <div class="grid-container">
+          @for (item of results; track $index) {
+            <div class="grid-item" routerLink="/watch/{{ item.id }}" (click)="close()">
+              @if (item.thumbnail) {
+                <img [src]="item.thumbnail" alt="{{ item.name }}">
+                <span class="name">{{ item.name }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }   
+  </div>
+</div>
