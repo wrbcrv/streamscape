@@ -6,7 +6,7 @@ namespace Api.Repositories
     public interface IGenreRepository
     {
         Task<Genre> GetByIdAsync(int id);
-        Task<Genre> GetByNameAsync(string name);
+        Task<Genre> GetByNameAsync(Models.Type type);
         Task<Genre> AddAsync(Genre genre);
     }
 }

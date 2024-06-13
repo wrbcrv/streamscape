@@ -1,18 +1,19 @@
 using Api.Models;
+using Api.Services;
 
 namespace Api.DTOs
 {
     public class GenreResponseDTO
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public string Type { get; set; }
 
         public static GenreResponseDTO ValueOf(Genre genre)
         {
             return new GenreResponseDTO
             {
                 Id = genre.Id,
-                Name = genre.Name
+                Type = genre.Type.GetDescription(),
             };
         }
     }

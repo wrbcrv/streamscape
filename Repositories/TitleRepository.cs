@@ -1,6 +1,6 @@
 using Api.Models;
 using Microsoft.EntityFrameworkCore;
-using UserApi.Data;
+using Api.Data;
 
 namespace Api.Repositories
 {

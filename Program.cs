@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using UserApi.Data;
+using Api.Data;
 using Api.Repositories;
 using Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -29,9 +29,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200")
-                   .WithMethods("GET", "POST", "PUT", "DELETE")
-                   .AllowAnyHeader();
+            builder.WithOrigins("http://localhost:4200").WithMethods("GET", "POST", "PUT", "DELETE").AllowAnyHeader();
         });
 });
 
@@ -93,8 +91,8 @@ if (app.Environment.IsDevelopment())
 
     using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    dbContext.Database.EnsureDeleted();
-    dbContext.Database.EnsureCreated();
+    /* dbContext.Database.EnsureDeleted();
+    dbContext.Database.EnsureCreated(); */
 }
 
 app.UseHttpsRedirection();

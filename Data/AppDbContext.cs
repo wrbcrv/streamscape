@@ -1,7 +1,7 @@
 using Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace UserApi.Data
+namespace Api.Data
 {
     public class AppDbContext : DbContext
     {
@@ -18,22 +18,21 @@ namespace UserApi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Episode>().HasOne(e => e.Title).WithMany(t => t.Episodes).HasForeignKey(e => e.TitleId);
-            modelBuilder.Entity<TitleGenre>().HasKey(tg => new { tg.TitleId, tg.GenreId });
-            modelBuilder.Entity<TitleGenre>().HasOne(tg => tg.Title).WithMany(t => t.TitleGenres).HasForeignKey(tg => tg.TitleId);
-            modelBuilder.Entity<TitleGenre>().HasOne(tg => tg.Genre).WithMany(g => g.TitleGenres).HasForeignKey(tg => tg.GenreId);
-            modelBuilder.Entity<User>().HasMany(u => u.MyList).WithMany(t => t.Users).UsingEntity(j => j.ToTable("UserTitles"));
             modelBuilder.Entity<Genre>().HasData(
-                new Genre { Id = 1, Name = "Action & Adventure" },
-                new Genre { Id = 2, Name = "Anime" },
-                new Genre { Id = 3, Name = "Children & Family" },
-                new Genre { Id = 4, Name = "Comedies" },
-                new Genre { Id = 5, Name = "Crime" },
-                new Genre { Id = 6, Name = "Documentaries" },
-                new Genre { Id = 7, Name = "Dramas" },
-                new Genre { Id = 8, Name = "Horror" },
-                new Genre { Id = 9, Name = "Independent" },
-                new Genre { Id = 10, Name = "Sci-Fi & Fantasy" }
+                new Genre { Id = 1, Type = Models.Type.AcaoAventura },
+                new Genre { Id = 2, Type = Models.Type.Anime },
+                new Genre { Id = 3, Type = Models.Type.CriancasFamilia },
+                new Genre { Id = 4, Type = Models.Type.Comedias },
+                new Genre { Id = 5, Type = Models.Type.Crime },
+                new Genre { Id = 6, Type = Models.Type.Documentarios },
+                new Genre { Id = 7, Type = Models.Type.Dramas },
+                new Genre { Id = 8, Type = Models.Type.Terror },
+                new Genre { Id = 9, Type = Models.Type.Independente },
+                new Genre { Id = 10, Type = Models.Type.FiccaoCientificaFantasia }
             );
+            modelBuilder.Entity<TitleGenre>().HasKey(tg => new { tg.TitleId, tg.GenreId });
+            modelBuilder.Entity<TitleGenre>().HasOne(tg => tg.Genre).WithMany(g => g.TitleGenres).HasForeignKey(tg => tg.GenreId);
+            modelBuilder.Entity<TitleGenre>().HasOne(tg => tg.Title).WithMany(t => t.TitleGenres).HasForeignKey(tg => tg.TitleId);
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
@@ -45,6 +44,7 @@ namespace UserApi.Data
                     CreatedAt = DateTime.UtcNow
                 }
             );
+            modelBuilder.Entity<User>().HasMany(u => u.MyList).WithMany(t => t.Users).UsingEntity(j => j.ToTable("UserTitles"));
         }
     }
 }

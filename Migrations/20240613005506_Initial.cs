@@ -19,7 +19,7 @@ namespace Streamscape.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                    Type = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,6 +32,7 @@ namespace Streamscape.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Thumbnail = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Release = table.Column<int>(type: "INTEGER", nullable: false)
@@ -65,7 +66,9 @@ namespace Streamscape.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Source = table.Column<string>(type: "TEXT", nullable: false),
+                    Number = table.Column<int>(type: "INTEGER", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
                     TitleId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -103,27 +106,51 @@ namespace Streamscape.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserTitles",
+                columns: table => new
+                {
+                    MyListId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsersId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTitles", x => new { x.MyListId, x.UsersId });
+                    table.ForeignKey(
+                        name: "FK_UserTitles_Titles_MyListId",
+                        column: x => x.MyListId,
+                        principalTable: "Titles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserTitles_Users_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Genres",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "Type" },
                 values: new object[,]
                 {
-                    { 1, "Action & Adventure" },
-                    { 2, "Anime" },
-                    { 3, "Children & Family" },
-                    { 4, "Comedies" },
-                    { 5, "Crime" },
-                    { 6, "Documentaries" },
-                    { 7, "Dramas" },
-                    { 8, "Horror" },
-                    { 9, "Independent" },
-                    { 10, "Sci-Fi & Fantasy" }
+                    { 1, 0 },
+                    { 2, 1 },
+                    { 3, 2 },
+                    { 4, 3 },
+                    { 5, 4 },
+                    { 6, 5 },
+                    { 7, 6 },
+                    { 8, 7 },
+                    { 9, 8 },
+                    { 10, 9 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "Email", "Password", "Role", "Username" },
-                values: new object[] { 1, new DateTime(2024, 6, 9, 12, 11, 36, 329, DateTimeKind.Utc).AddTicks(7876), "admin@example.com", "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC", 0, "admin" });
+                values: new object[] { 1, new DateTime(2024, 6, 13, 0, 55, 6, 286, DateTimeKind.Utc).AddTicks(9031), "admin@example.com", "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC", 0, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Episodes_TitleId",
@@ -134,6 +161,11 @@ namespace Streamscape.Migrations
                 name: "IX_TitleGenres_GenreId",
                 table: "TitleGenres",
                 column: "GenreId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTitles_UsersId",
+                table: "UserTitles",
+                column: "UsersId");
         }
 
         /// <inheritdoc />
@@ -146,13 +178,16 @@ namespace Streamscape.Migrations
                 name: "TitleGenres");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "UserTitles");
 
             migrationBuilder.DropTable(
                 name: "Genres");
 
             migrationBuilder.DropTable(
                 name: "Titles");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

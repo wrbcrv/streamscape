@@ -1,6 +1,6 @@
 using Api.Models;
 using Microsoft.EntityFrameworkCore;
-using UserApi.Data;
+using Api.Data;
 
 namespace Api.Repositories
 {
@@ -18,9 +18,9 @@ namespace Api.Repositories
             return await _context.Genres.FindAsync(id);
         }
 
-        public async Task<Genre> GetByNameAsync(string name)
+        public async Task<Genre> GetByNameAsync(Models.Type name)
         {
-            return await _context.Genres.FirstOrDefaultAsync(g => g.Name == name);
+            return await _context.Genres.FirstOrDefaultAsync(g => g.Type == name);
         }
 
         public async Task<Genre> AddAsync(Genre genre)
