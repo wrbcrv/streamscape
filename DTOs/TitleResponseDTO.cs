@@ -1,4 +1,5 @@
 using Api.Models;
+using Api.Services;
 
 namespace Api.DTOs
 {
@@ -9,6 +10,7 @@ namespace Api.DTOs
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int Release { get; set; }
+        public string Rating { get; set; } = string.Empty;
         public List<EpisodeResponseDTO>? Episodes { get; set; }
         public List<GenreResponseDTO>? Genres { get; set; }
 
@@ -21,6 +23,7 @@ namespace Api.DTOs
                 Name = title.Name,
                 Description = title.Description,
                 Release = title.Release,
+                Rating = title.Rating.GetDescription(),
                 Episodes = title.Episodes?.Select(EpisodeResponseDTO.ValueOf).ToList(),
                 Genres = title.TitleGenres?.Select(tg => GenreResponseDTO.ValueOf(tg.Genre)).ToList()
             };
