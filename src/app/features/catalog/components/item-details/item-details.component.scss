@@ -74,6 +74,19 @@
     margin: 18px 0 18px 0;
 }
 
+.release {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot {
+    background-color: #fff;
+    border-radius: 50px;
+    width:  3px;
+    height: 3px;
+}
+
 .options {
     display: flex;
     gap: 10px;

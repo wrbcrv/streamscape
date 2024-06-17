@@ -7,6 +7,7 @@ export interface Title {
     name: string;
     description: string;
     release: number;
+    rating: string;
     episodes: Episode[];
     genres: Genre[];
 }

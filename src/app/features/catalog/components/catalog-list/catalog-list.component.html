@@ -15,7 +15,11 @@
             @if ($index === index) {
               <div class="details">
                 <h1 class="name">{{ item.name }}</h1>
-                <p>{{ item.release }}</p>
+                <p class="release">
+                  <span>{{ item.rating }}</span>
+                  <span class="dot"></span>
+                  <span>{{ item.release }}</span>
+                </p>
                 <p>{{ item.description }}</p>
                 <a class="button goto" routerLink="/watch/{{item.id}}">Ver mais</a>
               </div>
