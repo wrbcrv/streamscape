@@ -98,11 +98,16 @@
     align-items: center;
     gap: 6px;
     border-radius: 10px;
-    width: 200px;
-    padding: 10px 20px;
+    width: 400px;
+    padding: 20px 40px;
     font-weight: 500;
     cursor: pointer;
     border: none;
+}
+
+.my-list {
+    width: fit-content;
+    padding: 20px;
 }
 
 .button:hover {

@@ -1,0 +1,32 @@
+.wrapper {
+    position: absolute;
+    width: 100%;
+    top: 84.5px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin: auto;
+}
+
+.grid-item {
+    width: 256px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.grid-item img {
+    object-fit: cover;
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    width:  256px;
+    height: 144px;
+}

@@ -3,7 +3,7 @@
     <input #input class="search" type="text" placeholder="Pesquisar..." (input)="onSearch(input.value)">
     @if (results.length > 0) {
       <div class="search-results">
-        <h1 class="search-info">Resultados para: "{{ search }}"</h1>
+        <h1 class="search-info">Resultados para "{{ search }}"</h1>
         <div class="grid-container">
           @for (item of results; track $index) {
             <div class="grid-item" routerLink="/watch/{{ item.id }}" (click)="close()">

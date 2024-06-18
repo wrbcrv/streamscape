@@ -19,7 +19,9 @@
           <div class="options">
             <button class="button" (click)="play(item.episodes[0].id)">Assistir agora</button>
             @if (user) {
-              <button class="button" (click)="addToMyList(user.id, item.id)">Minha lista</button>
+              <button class="button my-list" (click)="addToMyList(user.id, item.id)">
+                <img src="../../../assets/icons/add.svg" alt="">
+              </button>
             }
           </div>
           <p class="description">{{ item.description }}</p>

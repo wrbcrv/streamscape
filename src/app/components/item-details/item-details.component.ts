@@ -3,9 +3,9 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CatalogService } from '../../services/catalog.service';
 import { Title } from '../../models/catalog-item.model';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../../../core/services/user.service';
-import { AuthService } from '../../../../core/services/auth.service';
-import { User } from '../../../../core/models/user.model';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-item-details',

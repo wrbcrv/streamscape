@@ -1,38 +1,32 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Register } from '../../../../core/models/register.model';
-import { AuthService } from '../../../../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-login',
   standalone: true,
   imports: [
     FormsModule,
     RouterModule
   ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
-export class RegisterComponent {
+export class LoginComponent {
   messages: { [key: string]: string } = {};
-  form: Register = {
-    email: '',
-    username: '',
-    password: '',
-    repeat: '',
-    role: 'User'
-  }
+  username: string = '';
+  password: string = '';
 
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
 
-  submit(): void {
+  login(): void {
     this.messages = {};
-
-    this.authService.register(this.form).subscribe(
+    
+    this.authService.login(this.username, this.password).subscribe(
       (res) => {
         this.router.navigateByUrl('/');
       },

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
-import { CatalogService } from '../../services/catalog.service';
-import { Title } from '../../models/catalog-item.model';
 import { RouterModule } from '@angular/router';
+import { CatalogService } from '../../../services/catalog.service';
+import { Title } from '../../../models/catalog-item.model';
 
 @Component({
   selector: 'app-search',

@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
-import { User } from '../../../core/models/user.model';
-import { AuthService } from '../../../core/services/auth.service';
-import { SearchComponent } from '../../../features/catalog/components/search/search.component';
+import { User } from '../../../models/user.model';
+import { AuthService } from '../../../services/auth.service';
 import { MenuComponent } from '../menu/menu.component';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-header',
