@@ -35,7 +35,8 @@ namespace Streamscape.Migrations
                     Thumbnail = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Release = table.Column<int>(type: "INTEGER", nullable: false)
+                    Release = table.Column<int>(type: "INTEGER", nullable: false),
+                    Rating = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -150,7 +151,7 @@ namespace Streamscape.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "Email", "Password", "Role", "Username" },
-                values: new object[] { 1, new DateTime(2024, 6, 13, 0, 55, 6, 286, DateTimeKind.Utc).AddTicks(9031), "admin@example.com", "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC", 0, "admin" });
+                values: new object[] { 1, new DateTime(2024, 6, 18, 13, 49, 41, 269, DateTimeKind.Utc).AddTicks(2352), "admin@example.com", "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC", 0, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Episodes_TitleId",

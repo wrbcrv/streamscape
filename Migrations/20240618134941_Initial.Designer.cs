@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Streamscape.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240613130526_Rating")]
-    partial class Rating
+    [Migration("20240618134941_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -193,7 +193,7 @@ namespace Streamscape.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 6, 13, 13, 5, 26, 599, DateTimeKind.Utc).AddTicks(7648),
+                            CreatedAt = new DateTime(2024, 6, 18, 13, 49, 41, 269, DateTimeKind.Utc).AddTicks(2352),
                             Email = "admin@example.com",
                             Password = "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC",
                             Role = 0,
