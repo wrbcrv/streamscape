@@ -4,11 +4,15 @@ import { AuthService } from '../../../services/auth.service';
 import { MyList } from '../../../models/my-list.model';
 import { CatalogService } from '../../../services/catalog.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../../../services/user.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-my-list',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterModule
+  ],
   templateUrl: './my-list.component.html',
   styleUrl: './my-list.component.scss'
 })
@@ -18,7 +22,8 @@ export class MyListComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private catalogService: CatalogService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +45,7 @@ export class MyListComponent implements OnInit {
 
   loadImage(item: MyList): void {
     const tid = item.id.toString();
-    
+
     this.catalogService.thumbnail(tid).subscribe(
       (blb) => {
         const objectURL = URL.createObjectURL(blb);
@@ -50,5 +55,24 @@ export class MyListComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+
+  removeItem(item: MyList): void {
+    if (this.user && this.user.id) {
+      this.userService.removeFromMyList(this.user.id, item.id).subscribe(
+        (res) => {
+          if (this.user && this.user.myList) {
+            const index = this.user.myList.indexOf(item);
+            
+            if (index > -1) {
+              this.user.myList.splice(index, 1);
+            }
+          }
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
+    }
   }
 }

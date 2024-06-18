@@ -21,6 +21,7 @@ export class ItemDetailsComponent implements OnInit {
   item: Title | null = null;
   user: User | null = null;
   message: string | null = null;
+  private timeoutId: any = null;
 
   constructor(
     private authService: AuthService,
@@ -74,13 +75,17 @@ export class ItemDetailsComponent implements OnInit {
     this.userService.addToMyList(uid, tid).subscribe(
       (res) => {
         this.message = res.message;
-        setTimeout(() => {
+
+        if (this.timeoutId)
+          clearTimeout(this.timeoutId);
+
+        this.timeoutId = setTimeout(() => {
           this.message = null;
         }, 3000);
       },
       (err) => {
         console.log(err);
       }
-    )
+    );
   }
 }

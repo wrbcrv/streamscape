@@ -1,13 +1,24 @@
-<div class="wrapper">
-  <div class="container">
-    <h1>Minha lista</h1>
-    <div class="grid-container">
-      @for (item of user?.myList; track $index) {
-        <div class="grid-item">
-          <img [src]="item.thumbnail" alt="{{ item.name }}">
-          <span class="name">{{ item.name }}</span>
+@if (user?.myList?.length !== 0) {
+  <div class="wrapper">
+    <div class="container">
+      <h1>Minha lista</h1>
+        <div class="grid-container">
+          @for (item of user?.myList; track $index) {
+          <div class="grid-item" routerLink="/watch/{{ item.id }}">
+            <div class="image-container">
+              <img [src]="item.thumbnail" alt="{{ item.name }}">
+              <button class="remove-button" (click)="removeItem(item)">✖</button>
+            </div>
+            <span class="name">{{ item.name }}</span>
+          </div>
+          }
         </div>
-      }
     </div>
   </div>
-</div>
+}
+@else {
+  <div class="empty-message">
+    <h1>Nenhum título salvo</h1>
+    <p>Selecionar para adicionar filmes, séries e muito mais à Minha lista. Depois, assista aqui em todos os seus dispositivos.</p>
+  </div>
+}

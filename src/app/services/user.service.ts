@@ -15,4 +15,8 @@ export class UserService {
   addToMyList(uid: number, tid: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${uid}/titles/${tid}`, {});
   }
+
+  removeFromMyList(uid: number, tid: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${uid}/titles/${tid}`);
+  }
 }
