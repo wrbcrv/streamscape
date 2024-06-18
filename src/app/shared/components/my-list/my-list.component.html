@@ -6,8 +6,10 @@
           @for (item of user?.myList; track $index) {
           <div class="grid-item" routerLink="/watch/{{ item.id }}">
             <div class="image-container">
-              <img [src]="item.thumbnail" alt="{{ item.name }}">
-              <button class="remove-button" (click)="removeItem(item)">✖</button>
+              <img [src]="item.thumbnail" class="thumbnail" alt="{{ item.name }}">
+              <div class="remove-button" (click)="removeItem(item)" title="Remover">
+                <img src="../../../../assets/icons/close_20dp.svg">
+              </div>
             </div>
             <span class="name">{{ item.name }}</span>
           </div>
