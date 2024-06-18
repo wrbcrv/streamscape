@@ -137,5 +137,33 @@ namespace Api.Services
 
             return (UserResponseDTO.ValueOf(user), message);
         }
+
+        public async Task<(UserResponseDTO user, string message)> RemoveFromMyList(int uid, int tid)
+        {
+            var user = await _userRepository.GetByIdAsync(uid);
+
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found.");
+            }
+
+            var title = await _titleRepository.GetByIdAsync(tid);
+
+            if (title == null)
+            {
+                throw new KeyNotFoundException("Title not found.");
+            }
+
+            if (user.MyList.Contains(title))
+            {
+                user.MyList.Remove(title);
+                await _userRepository.UpdateAsync(user);
+                return (UserResponseDTO.ValueOf(user), "Removido da minha lista");
+            }
+            else
+            {
+                return (UserResponseDTO.ValueOf(user), "Título não encontrado na lista");
+            }
+        }
     }
 }

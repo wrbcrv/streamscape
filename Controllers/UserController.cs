@@ -123,5 +123,23 @@ namespace UserApi.Controllers
             }
         }
 
+        [HttpDelete("{uid}/titles/{tid}")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult> RemoveFromMyList(int uid, int tid)
+        {
+            try
+            {
+                var (user, message) = await _userService.RemoveFromMyList(uid, tid);
+                return Ok(new { Message = message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

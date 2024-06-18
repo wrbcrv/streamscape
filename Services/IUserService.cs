@@ -11,5 +11,6 @@ namespace Api.Services
         Task<bool> DeleteAsync(int id);
         Task<UserResponseDTO> GetByUsernameOrEmailAndPassword(string usernameOrEmail, string password);
         Task<(UserResponseDTO user, string message)> AddToMyList(int uid, int tid);
+        Task<(UserResponseDTO user, string message)> RemoveFromMyList(int uid, int tid);
     }
 }
