@@ -108,34 +108,6 @@ namespace Streamscape.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Text = table.Column<string>(type: "TEXT", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TitleId = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comment_Titles_TitleId",
-                        column: x => x.TitleId,
-                        principalTable: "Titles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comment_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserTitles",
                 columns: table => new
                 {
@@ -179,17 +151,7 @@ namespace Streamscape.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "Email", "Password", "Role", "Username" },
-                values: new object[] { 1, new DateTime(2024, 6, 19, 3, 31, 16, 75, DateTimeKind.Utc).AddTicks(2737), "admin@example.com", "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC", 0, "admin" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comment_TitleId",
-                table: "Comment",
-                column: "TitleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comment_UserId",
-                table: "Comment",
-                column: "UserId");
+                values: new object[] { 1, new DateTime(2024, 6, 19, 4, 4, 19, 307, DateTimeKind.Utc).AddTicks(2558), "admin@example.com", "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC", 0, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Episodes_TitleId",
@@ -210,9 +172,6 @@ namespace Streamscape.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Comment");
-
             migrationBuilder.DropTable(
                 name: "Episodes");
 

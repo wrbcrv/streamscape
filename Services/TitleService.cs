@@ -80,9 +80,16 @@ namespace Api.Services
             title.Description = titleDTO.Description;
             title.Release = titleDTO.Release;
 
+            if (titleDTO.File != null)
+            {
+                var newThumbnailSource = await _fileService.UpdateAsync(title.Thumbnail, titleDTO.File);
+                title.Thumbnail = newThumbnailSource;
+            }
+
             title = await _titleRepository.UpdateAsync(title);
             return TitleResponseDTO.ValueOf(title);
         }
+
 
         public async Task<bool> DeleteAsync(int id)
         {

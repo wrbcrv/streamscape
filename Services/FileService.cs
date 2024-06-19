@@ -1,5 +1,9 @@
 using Api.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace YourProject.Services
 {
@@ -23,11 +27,6 @@ namespace YourProject.Services
                 throw new ArgumentException("Nenhum arquivo fornecido para upload.");
             }
 
-            if (!file.ContentType.StartsWith("video/") && !file.ContentType.StartsWith("image/"))
-            {
-                throw new ArgumentException("O arquivo fornecido não é um vídeo ou uma imagem.");
-            }
-
             var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
             var filePath = Path.Combine(_path, fileName);
 
@@ -43,6 +42,40 @@ namespace YourProject.Services
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Erro ao enviar o arquivo: " + ex.Message);
+            }
+        }
+
+        public async Task<string> UpdateAsync(string existingFileName, IFormFile newFile)
+        {
+            if (newFile == null || newFile.Length == 0)
+            {
+                throw new ArgumentException("Nenhum arquivo fornecido para atualização.");
+            }
+
+            var existingFilePath = Path.Combine(_path, existingFileName);
+
+            if (!File.Exists(existingFilePath))
+            {
+                throw new FileNotFoundException("Arquivo a ser atualizado não encontrado.");
+            }
+
+            var newFileName = Guid.NewGuid().ToString() + Path.GetExtension(newFile.FileName);
+            var newFilePath = Path.Combine(_path, newFileName);
+
+            try
+            {
+                File.Delete(existingFilePath);
+
+                using (var stream = new FileStream(newFilePath, FileMode.Create))
+                {
+                    await newFile.CopyToAsync(stream);
+                }
+
+                return newFileName;
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Erro ao atualizar o arquivo: " + ex.Message);
             }
         }
 
