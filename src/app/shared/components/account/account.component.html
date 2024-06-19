@@ -1,0 +1,83 @@
+@if (user) {
+  <div class="container">
+    <h1>Conta</h1>
+    <form class="form-container" (ngSubmit)="updateAccount()">
+      <div class="box">
+        <label for="email">Endereço de E-mail</label>
+        <input 
+          type="email" 
+          id="email" 
+          [(ngModel)]="email" 
+          name="email" 
+        />
+      </div>
+      @for (error of errors('Email'); track $index) {
+        <span class="error-message">
+          <img src="../../../../assets/icons/info_20dp.svg" alt="">
+          {{ error }}
+        </span>
+      }
+      <div class="box">
+        <label for="username">Nome de usuário</label>
+        <input 
+          type="text" 
+          id="username" 
+          [(ngModel)]="usern" 
+          name="usern" 
+        />
+      </div>
+      @for (error of errors('Username'); track $index) {
+        <span class="error-message">
+          <img src="../../../../assets/icons/info_20dp.svg" alt="">
+          {{ error }}
+        </span>
+      }
+      <div class="box">
+        <label for="currentPassword">Senha atual</label>
+        <input 
+          type="password" 
+          id="currentPassword" 
+          [(ngModel)]="curPw"
+          name="currentPassword"
+        />
+      </div>
+      @for (error of errors('CurrentPassword'); track $index) {
+        <span class="error-message">
+          <img src="../../../../assets/icons/info_20dp.svg" alt="">
+          {{ error }}
+        </span>
+      }
+      <div class="box">
+        <label for="password">Nova senha</label>
+        <input 
+          type="password" 
+          id="password" 
+          [(ngModel)]="passw"
+          name="passw"
+        />
+      </div>
+      @for (error of errors('NewPassword'); track $index) {
+        <span class="error-message">
+          <img src="../../../../assets/icons/info_20dp.svg" alt="">
+          {{ error }}
+        </span>
+      }
+      <div class="box">
+        <label for="repeatPassword">Repetir nova senha</label>
+        <input 
+          type="password" 
+          id="repeatPassword" 
+          [(ngModel)]="rptPw" 
+          name="rptPw"
+        />
+      </div>
+      @for (error of errors('RepeatPassword'); track $index) {
+        <span class="error-message">
+          <img src="../../../../assets/icons/info_20dp.svg" alt="">
+          {{ error }}
+        </span>
+      }
+      <button type="submit">Atualizar</button>
+    </form>
+  </div>
+}

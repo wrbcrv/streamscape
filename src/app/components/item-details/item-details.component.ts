@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CatalogService } from '../../services/catalog.service';
 import { Title } from '../../models/catalog-item.model';
@@ -23,6 +23,8 @@ export class ItemDetailsComponent implements OnInit {
   message: string | null = null;
   private timeoutId: any = null;
 
+  @ViewChild('container') container!: ElementRef<HTMLDivElement>;
+
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
@@ -39,6 +41,7 @@ export class ItemDetailsComponent implements OnInit {
           (data) => {
             this.item = data;
             this.loadThumbnail(this.item);
+            console.log(this.item.episodes.length)
           }
         );
       }
@@ -87,5 +90,9 @@ export class ItemDetailsComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  scroll(amount: number) {
+    this.container.nativeElement.scrollBy({ left: amount, behavior: 'smooth' })
   }
 }

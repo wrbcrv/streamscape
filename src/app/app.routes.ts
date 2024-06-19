@@ -6,6 +6,7 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { PlayerComponent } from './components/player/player.component';
 import { MyListComponent } from './shared/components/my-list/my-list.component';
 import { itemResolver } from './components/item-details/resolver/item.resolver';
+import { AccountComponent } from './shared/components/account/account.component';
 
 export const routes: Routes = [
   {
@@ -38,5 +39,10 @@ export const routes: Routes = [
     path: 'my-list',
     component: MyListComponent,
     title: 'Minha Lista | Streamscape'
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    title: 'Conta | Streamscape'
   }
 ];

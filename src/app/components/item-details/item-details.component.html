@@ -1,7 +1,7 @@
 @if (message) {
-  <div class="alert alert-info fade-in-out">
-    {{ message }}
-  </div>
+<div class="alert alert-info fade-in-out">
+  {{ message }}
+</div>
 }
 <div class="wrapper">
   <div class="hero">
@@ -9,27 +9,50 @@
     <div class="gradient-overlay"></div>
     <div class="content">
       @if (item) {
-        <div class="details">
-          <h1 class="name">{{ item.name }}</h1>
-          <p class="release">
-            <span>{{ item.rating }}</span>
-            <span class="dot"></span>
-            <span>{{ item.release }}</span>
-          </p>
-          <div class="options">
-            <button class="button" (click)="play(item.episodes[0].id)">Assistir agora</button>
-            @if (user) {
-              <button class="button my-list" (click)="addToMyList(user.id, item.id)">
-                <img src="../../../assets/icons/add.svg" alt="">
-              </button>
-            }
-          </div>
-          <p class="description">{{ item.description }}</p>
-          @for (genre of item.genres; track $index) {
-            <p>{{ genre.type }}</p>
+      <div class="details">
+        <h1 class="name">{{ item.name }}</h1>
+        <p class="release">
+          <span>{{ item.rating }}</span>
+          <span class="dot"></span>
+          <span>{{ item.release }}</span>
+        </p>
+        <div class="options">
+          <button class="button" (click)="play(item.episodes[0].id)">Assistir agora</button>
+          @if (user) {
+          <button class="button my-list" (click)="addToMyList(user.id, item.id)">
+            <img src="../../../assets/icons/add_24dp.svg" alt="">
+          </button>
           }
         </div>
+        <p class="description">{{ item.description }}</p>
+        @for (genre of item.genres; track $index) {
+        <p>{{ genre.type }}</p>
+        }
+      </div>
       }
     </div>
   </div>
+  @if (item && item.episodes && item.episodes.length > 1) {
+  <div class="episodes-container">
+    <h2>Episódios</h2>
+    <div class="controls">
+      <div (click)="scroll(-200)" class="next">
+        <span class="material-symbols-outlined">chevron_left</span>
+      </div>
+      <div (click)="scroll(+200)" class="prev">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </div>
+    </div>
+    <div class="episodes" #container>
+      <div class="flex-container">
+        <div *ngFor="let episode of item.episodes; let i = index" class="flex-item" routerLink="/watch/{{ item.id }}/{{ episode.id }}">
+          <div class="episode-thumbnail"></div>
+          <div class="episode-details">
+            <span>Episódio {{ i + 1 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
 </div>

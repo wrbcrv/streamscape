@@ -4,9 +4,9 @@
       <h1>Minha lista</h1>
         <div class="grid-container">
           @for (item of user?.myList; track $index) {
-          <div class="grid-item" routerLink="/watch/{{ item.id }}">
+          <div class="grid-item">
             <div class="image-container">
-              <img [src]="item.thumbnail" class="thumbnail" alt="{{ item.name }}">
+              <img [src]="item.thumbnail" class="thumbnail" alt="{{ item.name }}" routerLink="/watch/{{ item.id }}">
               <div class="remove-button" (click)="removeItem(item)" title="Remover">
                 <img src="../../../../assets/icons/close_20dp.svg">
               </div>

@@ -1,11 +1,14 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/user.model';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterModule
+  ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
@@ -13,7 +16,8 @@ export class MenuComponent implements OnInit {
   user: User | null = null;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +40,7 @@ export class MenuComponent implements OnInit {
   }
 
   logout(): void {
-    this.closeMenu.emit();
+    this.authService.logout()
+    this.router.navigate(['/login']);
   }
 }

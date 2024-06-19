@@ -86,7 +86,7 @@
 .dot {
     background-color: #fff;
     border-radius: 50px;
-    width:  3px;
+    width: 3px;
     height: 3px;
 }
 
@@ -109,10 +109,79 @@
 }
 
 .my-list {
+    background: transparent;
     width: fit-content;
     padding: 20px;
 }
 
+.my-list:hover {
+    background: rgba($color: #fff, $alpha: 0.2) !important;
+}
+
 .button:hover {
     background: rgba($color: #fff, $alpha: 0.8);
+}
+
+.episodes-container {
+    position: relative;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.episodes {
+    position: relative;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.flex-container {
+    display: inline-flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+.flex-item {
+    white-space: normal;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.episode-thumbnail {
+    background: rgba(255, 255, 255, 0.10);
+    width: 384px;
+    height: 216px;
+    border-radius: 10px;
+}
+
+.episode-details {
+    text-align: left;
+}
+
+.episode-details span {
+    display: block;
+    margin-top: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.next,
+.prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50px;
+    width:  30px;
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
