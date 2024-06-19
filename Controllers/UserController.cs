@@ -70,12 +70,16 @@ namespace UserApi.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin, User")]
-        public async Task<ActionResult<UserDTO>> Update(int id, UserDTO userDTO)
+        public async Task<ActionResult<UserDTO>> Update(int id, UserUpdateDTO userDTO)
         {
             try
             {
                 var user = await _userService.UpdateAsync(id, userDTO);
                 return Ok(user);
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
             catch (Exception ex)
             {

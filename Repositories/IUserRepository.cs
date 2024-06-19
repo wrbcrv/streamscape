@@ -10,6 +10,7 @@ namespace Api.Repositories
         Task<User> UpdateAsync(User user);
         Task<bool> DeleteAsync(int id);
         Task<User> GetByUsernameAsync(string username);
+        Task<User> GetByEmailAsync(string username);
         Task<User> GetByUsernameOrEmailAsync(string usernameOrEmail);
     }
 }

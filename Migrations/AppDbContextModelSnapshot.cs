@@ -17,6 +17,34 @@ namespace Streamscape.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.5");
 
+            modelBuilder.Entity("Api.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TitleId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TitleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("Api.Models.Episode", b =>
                 {
                     b.Property<int>("Id")
@@ -190,7 +218,7 @@ namespace Streamscape.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 6, 18, 13, 49, 41, 269, DateTimeKind.Utc).AddTicks(2352),
+                            CreatedAt = new DateTime(2024, 6, 19, 3, 31, 16, 75, DateTimeKind.Utc).AddTicks(2737),
                             Email = "admin@example.com",
                             Password = "$2a$11$Ra1itzxCt0VdTW7UrQFDoehDSrLQwcIo/mzWoLZSnt83s/ZbgkGaC",
                             Role = 0,
@@ -211,6 +239,25 @@ namespace Streamscape.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("UserTitles", (string)null);
+                });
+
+            modelBuilder.Entity("Api.Models.Comment", b =>
+                {
+                    b.HasOne("Api.Models.Title", "Title")
+                        .WithMany("Comments")
+                        .HasForeignKey("TitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Api.Models.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Title");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Api.Models.Episode", b =>
@@ -265,9 +312,16 @@ namespace Streamscape.Migrations
 
             modelBuilder.Entity("Api.Models.Title", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Episodes");
 
                     b.Navigation("TitleGenres");
+                });
+
+            modelBuilder.Entity("Api.Models.User", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

@@ -45,11 +45,16 @@ namespace Api.Services
                 throw new ArgumentException("As senhas não coincidem.");
             }
 
-            var existing = await _userRepository.GetByUsernameAsync(userDTO.Username);
-
-            if (existing != null)
+            var existingByUsername = await _userRepository.GetByUsernameAsync(userDTO.Username);
+            if (existingByUsername != null)
             {
                 throw new InvalidOperationException("Este nome de usuário já está em uso.");
+            }
+
+            var existingByEmail = await _userRepository.GetByEmailAsync(userDTO.Email);
+            if (existingByEmail != null)
+            {
+                throw new InvalidOperationException("Este email já está em uso.");
             }
 
             var user = _mapper.Map<User>(userDTO);
@@ -59,24 +64,43 @@ namespace Api.Services
             return UserResponseDTO.ValueOf(user);
         }
 
-        public async Task<UserResponseDTO> UpdateAsync(int id, UserDTO userDTO)
+        // UserService.cs
+
+        public async Task<UserResponseDTO> UpdateAsync(int id, UserUpdateDTO userDTO)
         {
             var user = await _userRepository.GetByIdAsync(id);
 
             if (user == null)
             {
-                throw new KeyNotFoundException("User not found.");
+                throw new ArgumentException($"Usuário com o id '{id}' não encontrado.");
             }
 
-            user.Username = userDTO.Username;
-            user.Password = userDTO.Password;
 
-            if (!string.IsNullOrEmpty(userDTO.Password))
+            user.Email = userDTO.Email;
+            user.Username = userDTO.Username;
+
+            if (!string.IsNullOrWhiteSpace(userDTO.NewPassword))
             {
-                user.Password = _passwordHasher.Hash(userDTO.Password);
+                if (string.IsNullOrWhiteSpace(userDTO.CurrentPassword))
+                {
+                    throw new ArgumentException("A senha atual é necessária para alterar a senha.");
+                }
+
+                if (!_passwordHasher.Verify(user.Password, userDTO.CurrentPassword))
+                {
+                    throw new ArgumentException("A senha atual está incorreta.");
+                }
+
+                if (userDTO.NewPassword != userDTO.RepeatPassword)
+                {
+                    throw new ArgumentException("A nova senha e a repetição da senha não coincidem.");
+                }
+
+                user.Password = _passwordHasher.Hash(userDTO.NewPassword);
             }
 
             user = await _userRepository.UpdateAsync(user);
+
             return UserResponseDTO.ValueOf(user);
         }
 
